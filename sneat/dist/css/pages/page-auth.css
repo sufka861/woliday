@@ -43,9 +43,7 @@
 .authentication-wrapper.authentication-basic .authentication-inner .card {
   z-index: 1;
 }
-.authentication-wrapper.authentication-basic .authentication-inner .card .app-brand {
-  margin-bottom: 2.5rem;
-}
+
 .authentication-wrapper .auth-input-wrapper .auth-input {
   max-width: 50px;
   padding-left: 0.4rem;
