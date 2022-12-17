@@ -1,0 +1,43 @@
+/********************* homepage *********************/
+
+.homepage_header{
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    text-align: center;
+
+}
+
+.homepage_logo{
+    width: 50%;
+}
+
+.homepage_timer{
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    width: 100%;
+    border-radius: 30px;
+    margin-bottom: 1.5rem;
+}
+
+.homepage_form{
+    text-align: center;
+}
+
+#carouselExample{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 30px;
+}
+
+
+
+/********************* My Route *********************/
+
+.myRoute .btn-primary{
+    margin-top: 2rem;
+    width: 60%;
+}
+
+.myRouteSubmit{
+    text-align: center;
+}
+
+

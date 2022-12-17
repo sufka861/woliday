@@ -15,7 +15,7 @@
             content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Woliday</title>
+    <title>My route</title>
 
     <meta name="description" content=""/>
 
@@ -74,7 +74,7 @@
             <ul class="menu-inner py-1">
                 <!-- Dashboard -->
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="./index.html" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
                         <div data-i18n="Analytics">Home</div>
                     </a>
@@ -86,7 +86,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="./my-route.html" class="menu-link">
+                    <a href="#" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-car"></i>
                         <div data-i18n="Analytics">My route</div>
                     </a>
@@ -235,122 +235,110 @@
                 <!-- Content -->
 
                 <div class="container-xxl flex-grow-1 container-p-y">
-                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Homepage /</span></h4>
+                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Homepage / My route</span></h4>
 
-                    <div class="card-body">
-
-                        <div class="homepage_header">
-                            <img src="../image/Woliday_nobackground.png" class="homepage_logo">
-                            <h2>We make the holidays happy for everyone</h2>
-                        </div>
-                        <div class="homepage_timer">
-                            <script src="https://cdn.logwork.com/widget/countdown.js"></script>
-                            <a href="https://logwork.com/countdown-xe8z" class="countdown-timer homepage_timer"
-                               data-style="columns"
-                               data-timezone="Asia/Jerusalem" data-textcolor="#ffffff" data-date="2023-02-28 09:00"
-                               data-background="#00c2e8" data-digitscolor="#ffffff" data-unitscolor="#ffffff">Time to
-                                Woliday</a>
-                        </div>
-
-                        <form action="#" class = "homepage_form">
-                            <button type="submit" class="btn btn-primary btn-xl">sign up for upcoming event</button>
-                        </form>
-
-                        <div id="carouselExample" class="carousel slide col-md-8 offset-md-2" data-bs-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></li>
-                                <li data-bs-target="#carouselExample" data-bs-slide-to="1"></li>
-                                <li data-bs-target="#carouselExample" data-bs-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="../image/baskets.jpg" alt="First slide"/>
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h3>250 Families</h3>
-                                        <p>Receive our holiday deliveries</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="../image/bags.jpg" alt="Second slide"/>
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h3>100 Volunteers</h3>
-                                        <p>Help us reach out to our families</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="d-block w-100" src="../image/people.jpg" alt="Third slide"/>
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h3>100,000 &#x20aa</h3>
-                                        <p>Donations made each holiday</p>
+                    <div class="card-body container-fluid myRoute">
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="mapouter">
+                                    <div class="gmap_canvas">
+                                        <iframe width="100%" height="600px" id="gmap_canvas"
+                                                src="https://maps.google.com/maps?q=Tel%20aviv&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                                frameborder="0" scrolling="no" marginheight="0"
+                                                marginwidth="0"></iframe>
+                                        <a href="https://fmovies-online.net"></a><br>
+                                        <style>.mapouter {
+                                            position: relative;
+                                            text-align: right;
+                                            height: 100%;
+                                            width: 600px;
+                                        }</style>
+                                        <a href="https://www.embedgooglemap.net">embedgooglemap.net</a>
+                                        <style>.gmap_canvas {
+                                            overflow: hidden;
+                                            background: none !important;
+                                            height: 100%;
+                                            width: 600px;
+                                        }</style>
                                     </div>
                                 </div>
                             </div>
-                            <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </a>
-                        </div>
-
-                        <div style="text-align: center">
-                            <video width="65%" height="auto" controls="controls" autoplay muted>
-                                <source src="../image/anashim-tovim-promo.mp4" type="video/mp4">
-                            </video>
+                            <form action="#" class="list-group col">
+                                <h3>My delivery route</h3>
+                                <label class="list-group-item">
+                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                    Soufflé pastry pie ice
+                                </label>
+                                <label class="list-group-item">
+                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                    Bear claw cake biscuit
+                                </label>
+                                <label class="list-group-item">
+                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                    Tart tiramisu cake
+                                </label>
+                                <label class="list-group-item">
+                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                    Bonbon toffee muffin
+                                </label>
+                                <label class="list-group-item">
+                                    <input class="form-check-input me-1" type="checkbox" value="">
+                                    Dragée tootsie roll
+                                </label>
+                                <div class="myRouteSubmit">
+                                    <button type="submit" class="btn btn-primary">Finished delivery</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
 
+
                 </div>
+                <!-- / Content -->
 
+                <!-- Footer -->
+                <footer class="content-footer footer bg-footer-theme">
+                    <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                        <div class="mb-2 mb-md-0">
+                            ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            , made by
+                            <a href="https://github.com/Ronina24" target="_blank" class="footer-link fw-bolder">Roni
+                                Naor, </a>
+                            <a href="http://se.shenkar.ac.il/software-engineers/racheliDekel/" target="_blank"
+                               class="footer-link fw-bolder">Racheli Dekel, </a>
+                            <a href="https://github.com/sufka861" target="_blank" class="footer-link fw-bolder">Suf
+                                Karmon </a>
+                        </div>
+                        <div>
+                            <a
+                                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                                    target="_blank"
+                                    class="footer-link me-4"
+                            >Documentation</a
+                            >
+                            <a
+                                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                                    target="_blank"
+                                    class="footer-link me-4"
+                            >Support</a
+                            >
+                        </div>
+                    </div>
+                </footer>
+                <!-- / Footer -->
 
+                <div class="content-backdrop fade"></div>
             </div>
-            <!-- / Content -->
-
-            <!-- Footer -->
-            <footer class="content-footer footer bg-footer-theme">
-                <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                    <div class="mb-2 mb-md-0">
-                        ©
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script>
-                        , made by
-                        <a href="https://github.com/Ronina24" target="_blank" class="footer-link fw-bolder">Roni
-                            Naor, </a>
-                        <a href="http://se.shenkar.ac.il/software-engineers/racheliDekel/" target="_blank"
-                           class="footer-link fw-bolder">Racheli Dekel, </a>
-                        <a href="https://github.com/sufka861" target="_blank" class="footer-link fw-bolder">Suf
-                            Karmon </a>
-                    </div>
-                    <div>
-                        <a
-                                href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                                target="_blank"
-                                class="footer-link me-4"
-                        >Documentation</a
-                        >
-                        <a
-                                href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                                target="_blank"
-                                class="footer-link me-4"
-                        >Support</a
-                        >
-                    </div>
-                </div>
-            </footer>
-            <!-- / Footer -->
-
-            <div class="content-backdrop fade"></div>
+            <!-- Content wrapper -->
         </div>
-        <!-- Content wrapper -->
+        <!-- / Layout page -->
     </div>
-    <!-- / Layout page -->
-</div>
 
-<!-- Overlay -->
-<div class="layout-overlay layout-menu-toggle"></div>
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
 </div>
 <!-- / Layout wrapper -->
 
