@@ -1,135 +1,330 @@
 <!DOCTYPE html>
 
-
-<html lang="en" class="light-style  customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="assets/"
-  data-template="vertical-menu-template-no-customizer">
-
+<html
+        lang="en"
+        class="light-style layout-menu-fixed"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="../assets/"
+        data-template="vertical-menu-template-free"
+>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
 
-  <title>Sneat - Free Bootstrap 5 HTML Admin Template</title>
+    <title>template</title>
 
-  <meta name="description" content="" />
+    <meta name="description" content=""/>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="../sneat/assets/img/favicon/favicon.ico" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../sneat/assets/img/favicon/favicon.ico"/>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-    rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+            rel="stylesheet"
+    />
 
-  <!-- Core CSS -->
-  <link rel="stylesheet" href="../sneat/assets/vendor/css/core.css" />
-  <link rel="stylesheet" href="../sneat/assets/vendor/css/theme-default.css" />
-  <link rel="stylesheet" href="../sneat/assets/css/demo.css" />
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="../sneat/assets/vendor/fonts/boxicons.css"/>
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../sneat/assets/vendor/css/core.css" class="template-customizer-core-css"/>
+    <link rel="stylesheet" href="../sneat/assets/vendor/css/theme-default.css" class="template-customizer-theme-css"/>
+    <link rel="stylesheet" href="../sneat/assets/css/demo.css"/>
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css"/>
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <script src="../sneat/assets/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../sneat/assets/js/config.js"></script>
 </head>
 
 <body>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+        <!-- Menu -->
 
-  <!-- Content -->
-  <div class="container flex-grow-1 container-p-y my-2">
-    <h3>Thank you for using Sneat - Free Bootstrap 5 HTML Admin Template! 😇</h3>
-    <p>If you’re a developer looking for most Powerful & comprehensive Bootstrap 5 HTML Admin Dashboard Template built
-      for developers, rich with features, and highly customizable look no further than Sneat. We’ve followed the highest
-      industry standards to bring you the very best admin template that is not only fast and easy to use but highly
-      scalable. Offering ultimate convenience and flexibility, you’ll be able to build whatever application you want
-      with very little hassle.</p>
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+            <div class="app-brand demo">
+                <a href="../sneat/html/index.html" class="app-brand-link">
+                    <img src="../image/Woliday_nobackground.svg">
+                </a>
 
-    <!-- Examples -->
-    <div class="row mt-sm-4 mt-3">
-      <div class="col-12 mb-3">
-        <div class="card">
-          <h5 class="card-header">Template Links</h5>
-          <!-- Template Demo Links -->
-          <table class="table">
-            <tbody>
-              <tr>
-                <th>Free Version</th>
-                <td><a href="../sneat/html/index.html" target="_blank">Vertical Menu Template</a></td>
-              </tr>
-            </tbody>
-          </table>
-          <!--/ Template Demo Links -->
+                <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+                    <i class="bx bx-chevron-left bx-sm align-middle"></i>
+                </a>
+            </div>
+
+            <div class="menu-inner-shadow"></div>
+
+            <ul class="menu-inner py-1">
+                <!-- Dashboard -->
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                        <div data-i18n="Analytics">Home</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-user"></i>
+                        <div data-i18n="Analytics">My profile</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-car"></i>
+                        <div data-i18n="Analytics">My roure</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-group"></i>
+                        <div data-i18n="Analytics">Squad</div>
+                    </a>
+                </li>
+
+
+                <!-- Misc -->
+                <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
+                <li class="menu-item">
+                    <a href="../sneat/html/index.html" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-cog me-2"></i>
+                        <div data-i18n="Analytics">Settings</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a
+                            href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                            target="_blank"
+                            class="menu-link"
+                    >
+                        <i class="menu-icon tf-icons bx bx-support"></i>
+                        <div data-i18n="Support">Support</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a
+                            href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                            target="_blank"
+                            class="menu-link"
+                    >
+                        <i class="menu-icon tf-icons bx bx-file"></i>
+                        <div data-i18n="Documentation">Documentation</div>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+            <!-- Navbar -->
+
+            <nav
+                    class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                    id="layout-navbar"
+            >
+                <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                    <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                        <i class="bx bx-menu bx-sm"></i>
+                    </a>
+                </div>
+
+                <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                    <!-- Search -->
+                    <div class="navbar-nav align-items-center">
+                        <div class="nav-item d-flex align-items-center">
+
+
+                        </div>
+                    </div>
+                    <!-- /Search -->
+
+                    <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+
+                        <!-- User -->
+                        <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
+                               data-bs-toggle="dropdown">
+                                <div class="avatar avatar-online">
+                                    <img src="https://avatars.githubusercontent.com/u/31104053?v=4" alt
+                                         class="w-px-40 h-auto rounded-circle"/>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar avatar-online">
+                                                    <img src="https://avatars.githubusercontent.com/u/31104053?v=4" alt
+                                                         class="w-px-40 h-auto rounded-circle"/>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <span class="fw-semibold d-block">John Doe</span>
+                                                <small class="text-muted">Admin</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bx bx-user me-2"></i>
+                                        <span class="align-middle">My Profile</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bx bx-car me-2"></i>
+                                        <span class="align-middle">My roure</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bx bx-group me-2"></i>
+                                        <span class="align-middle">Squad</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bx bx-cog me-2"></i>
+                                        <span class="align-middle">Settings</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                                <li>
+
+                                    <a class="dropdown-item" href="login.html">
+                                        <i class="bx bx-power-off me-2"></i>
+                                        <span class="align-middle">Log Out</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--/ User -->
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- / Navbar -->
+
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+                <!-- Content -->
+
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Homepage /</span></h4>
+
+                    <div class="card-body">
+
+                        <script src="https://cdn.logwork.com/widget/countdown.js"></script>
+                        <a style="font-family: Comic Sans MS, Comic Sans, cursive"
+                           href="https://logwork.com/countdown-xe8z" class="countdown-timer" data-style="columns"
+                           data-timezone="Asia/Jerusalem" data-textcolor="#ffffff" data-date="2023-02-28 09:00"
+                           data-background="#00c2e8" data-digitscolor="#ffffff" data-unitscolor="#ffffff">Time to
+                            Woliday</a>
+                        <!-- link to change the counter embeded: https://logwork.com/countdown-timer-->
+
+                        <div class="align-self-center">
+                            <video width="65%" height="auto" controls="controls" autoplay muted>
+                                <source src="../image/anashim-tovim-promo.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- / Content -->
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+                <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                    <div class="mb-2 mb-md-0">
+                        ©
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>
+                        , made by
+                        <a href="https://github.com/Ronina24" target="_blank" class="footer-link fw-bolder">Roni
+                            Naor, </a>
+                        <a href="http://se.shenkar.ac.il/software-engineers/racheliDekel/" target="_blank"
+                           class="footer-link fw-bolder">Racheli Dekel, </a>
+                        <a href="https://github.com/sufka861" target="_blank" class="footer-link fw-bolder">Suf
+                            Karmon </a>
+                    </div>
+                    <div>
+                        <a
+                                href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                                target="_blank"
+                                class="footer-link me-4"
+                        >Documentation</a
+                        >
+                        <a
+                                href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                                target="_blank"
+                                class="footer-link me-4"
+                        >Support</a
+                        >
+                    </div>
+                </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
         </div>
-      </div>
-
-      <div class="col-12 mb-3">
-        <div class="card">
-
-          <h5 class="card-header">Other Important Links</h5>
-          <!-- Other Links -->
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">URL</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              <tr>
-                <td>License </td>
-                <td>
-                  <a href="https://themeselection.com/license/" target="_blank">https://themeselection.com/license/</a>
-                </td>
-              </tr>
-
-              <tr>
-                <td>Documentation</td>
-                <td>
-                  <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                    target="_blank">https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/</a>
-                </td>
-              </tr>
-
-              <tr>
-                <td>Changelog</td>
-                <td>
-                  <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template-free/changelog.html"
-                    target="_blank">https://themeselection.com/demo/sneat-bootstrap-html-admin-template-free/changelog.html</a>
-                </td>
-              </tr>
-
-
-              <tr>
-                <td>GitHub Repository</td>
-                <td>
-                  <a href="https://github.com/themeselection/sneat-html-admin-template-free"
-                    target="_blank">https://github.com/themeselection/sneat-html-admin-template-free</a>
-                </td>
-              </tr>
-
-
-              <tr>
-                <td>Support</td>
-                <td>
-                  <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                    target="_blank">https://github.com/themeselection/sneat-html-admin-template-free/issues</a>
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
-          <!--/ Other Links -->
-        </div>
-      </div>
-
-      <div class="col-12 mb-3">
-        <p>Looking for <strong>PRO</strong> version with <strong>Premium support</strong>?</p>
-        <div class="upgrade-to-pro">
-          <a href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/" target="_blank"
-            class="btn btn-danger">Upgrade to <strong>Sneat Pro</strong></a>
-        </div>
-      </div>
+        <!-- Content wrapper -->
     </div>
-  </div>
-  <!-- / Content -->
+    <!-- / Layout page -->
+</div>
 
+<!-- Overlay -->
+<div class="layout-overlay layout-menu-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
+
+
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<script src="../sneat/assets/vendor/libs/jquery/jquery.js"></script>
+<script src="../sneat/assets/vendor/libs/popper/popper.js"></script>
+<script src="../sneat/assets/vendor/js/bootstrap.js"></script>
+<script src="../sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+<script src="../sneat/assets/vendor/js/menu.js"></script>
+<!-- endbuild -->
+
+<!-- Vendors JS -->
+
+<!-- Main JS -->
+<script src="../sneat/assets/js/main.js"></script>
+
+<!-- Page JS -->
+<script src="../sneat/assets/js/pages-account-settings-account.js"></script>
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
-
 </html>
