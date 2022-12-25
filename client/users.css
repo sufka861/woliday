@@ -1,0 +1,10 @@
+#wantedUser {
+    min-height: auto;
+    padding: 0.32rem 0.75rem;
+    border: 0;
+    background: transparent;
+    transition: all .2s linear;
+}
+input:focus{
+    outline: none;
+}
