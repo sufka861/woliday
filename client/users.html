@@ -15,7 +15,7 @@
           content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
   />
 
-  <title>My profile</title>
+  <title>template</title>
 
   <meta name="description" content="" />
 
@@ -40,6 +40,8 @@
 
   <!-- Vendors CSS -->
   <link rel="stylesheet" href="../sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+  <link rel="stylesheet" href="users.css" />
+
 
   <!-- Page CSS -->
 
@@ -96,10 +98,6 @@
             <div data-i18n="Analytics">Squad</div>
           </a>
         </li>
-
-
-
-
         <!-- Misc -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
         <li class="menu-item">
@@ -226,177 +224,118 @@
       </nav>
 
       <!-- / Navbar -->
-          <!-- Content wrapper -->
-          <div class="content-wrapper">
-            <!-- Content -->
 
-            <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4">My profile</h4>
+      <!-- Content wrapper -->
+      <div class="content-wrapper">
+        <!-- Content -->
 
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="card mb-4">
-                    <h5 class="card-header">Profile Details</h5>
-                    <!-- Account -->
-                    <div class="card-body">
-                      <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <img
-                                src=https://avatars.githubusercontent.com/u/31104053?v=4"
-                                alt="user-avatar"
-                                class="d-block rounded"
-                                height="100"
-                                width="100"
-                                id="uploadedAvatar"
-                        />
-                        <div class="button-wrapper">
-                          <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                            <span class="d-none d-sm-block">Upload new photo</span>
-                            <i class="bx bx-upload d-block d-sm-none"></i>
-                            <input
-                                    type="file"
-                                    id="upload"
-                                    class="account-file-input"
-                                    hidden
-                                    accept="image/png, image/jpeg"
-                            />
-                          </label>
-                          <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
-                            <i class="bx bx-reset d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Reset</span>
-                          </button>
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Volunteers</span></h4>
 
-                          <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+          <div class="card-body">
+
+            <div class="card">
+              <input type="text" id="wantedUser" class="card-header" onkeyup="filter()" placeholder="Search for names.." title="Type in a name">
+              <div class="table-responsive text-nowrap">
+                <table id=usersTable class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Squad ID</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody class="table-border-bottom-0">
+                  <tr>
+                    <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>VueJs Project</strong></td>
+                    <td>roro Baker</td>
+                    <td>
+                      <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Lilian Fuller">
+                          <img src="../sneat/assets/img/avatars/5.png" alt="Avatar" class="rounded-circle">
+                        </li>
+                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Sophia Wilkerson">
+                          <img src="../sneat/assets/img/avatars/6.png" alt="Avatar" class="rounded-circle">
+                        </li>
+                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Christina Parker">
+                          <img src="../sneat/assets/img/avatars/7.png" alt="Avatar" class="rounded-circle">
+                        </li>
+                      </ul>
+                    </td>
+                    <td><span class="badge bg-label-info me-1">Scheduled</span></td>
+                    <td>
+                      <div class="dropdown">
+                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                          <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
                         </div>
                       </div>
-                    </div>
-                    <hr class="my-0" />
-                    <div class="card-body">
-                      <form id="formAccountSettings" method="POST" onsubmit="return false">
-                        <div class="row">
-                          <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">First Name</label>
-                            <input
-                                    class="form-control"
-                                    type="text"
-                                    id="firstName"
-                                    name="firstName"
-                                    value="David"
-                                    autofocus
-                            />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" value="Avidn" />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="email" class="form-label">E-mail</label>
-                            <input
-                                    class="form-control"
-                                    type="text"
-                                    id="email"
-                                    name="email"
-                                    value="john.doe@example.com"
-                                    placeholder="john.doe@example.com"
-                            />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label class="form-label" for="phoneNumber">Phone Number</label>
-                            <div class="input-group input-group-merge">
-                              <span class="input-group-text">+972</span>
-                              <input
-                                      type="text"
-                                      id="phoneNumber"
-                                      name="phoneNumber"
-                                      class="form-control"
-                                      placeholder="052 6535556"
-                              />
-                            </div>
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label class="form-label" for="phoneNumber">Age</label>
-                            <div class="input-group input-group-merge">
-                              <input
-                                      type="number"
-                                      id="Age"
-                                      name="Age"
-                                      class="form-control"
-                              />
-                            </div>
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label class="form-label" for="role">role</label>
-                            <select id="role" class="select2 form-select" >
-                              <option value="">Select</option>
-                              <option value="Tel Aviv">Driver</option>
-                              <option value="Netanya">delivery</option>
-                              <option value="Bat Yam">packer</option>
-                              <option value="Holon">delivery + packer</option>
-                            </select>
-                          </div>
-
-                          <div class="mb-3 col-md-6">
-                            <label class="form-label" for="area">division area</label>
-                            <select id="area" class="select2 form-select" >
-                              <option value="">Select</option>
-                              <option value="Tel Aviv">Tel Aviv</option>
-                              <option value="Netanya">Netanya</option>
-                              <option value="Bat Yam">Bat Yam</option>
-                              <option value="Holon">Holon</option>
-                              <option value="Rishon Lezion">Rishon Lezion</option>
-                            </select>
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="language" class="form-label">Language</label>
-                            <select id="language" class="select2 form-select">
-                              <option value="">Select Language</option>
-                              <option value="hb">Hebrew</option>
-                              <option value="en">English</option>
-                              <option value="fr">French</option>
-                              <option value="de">German</option>
-                              <option value="pt">Portuguese</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div class="mt-2">
-                          <button type="submit" class="btn btn-primary me-2">Edit</button>
-<!--                          <button type="reset" class="btn btn-outline-secondary">Cancel</button>-->
-                        </div>
-                      </form>
-                    </div>
-                    <!-- /Account -->
-                  </div>
-                  <div class="card">
-                    <h5 class="card-header">Delete Account</h5>
-                    <div class="card-body">
-                      <div class="mb-3 col-12 mb-0">
-                        <div class="alert alert-warning">
-                          <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete your account?</h6>
-                          <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>filterect</strong></td>
+                    <td>Trevor Baker</td>
+                    <td>
+                      <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Lilian Fuller">
+                          <img src="../sneat/assets/img/avatars/5.png" alt="Avatar" class="rounded-circle">
+                        </li>
+                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Sophia Wilkerson">
+                          <img src="../sneat/assets/img/avatars/6.png" alt="Avatar" class="rounded-circle">
+                        </li>
+                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Christina Parker">
+                          <img src="../sneat/assets/img/avatars/7.png" alt="Avatar" class="rounded-circle">
+                        </li>
+                      </ul>
+                    </td>
+                    <td><span class="badge bg-label-info me-1">Scheduled</span></td>
+                    <td>
+                      <div class="dropdown">
+                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                          <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
                         </div>
                       </div>
-                      <form id="formAccountDeactivation" onsubmit="return false">
-                        <div class="form-check mb-3">
-                          <input
-                                  class="form-check-input"
-                                  type="checkbox"
-                                  name="accountActivation"
-                                  id="accountActivation"
-                          />
-                          <label class="form-check-label" for="accountActivation"
-                          >I confirm my account deactivation</label
-                          >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>VueJs Project</strong></td>
+                    <td>Trevor Baker</td>
+                    <td>
+                      <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Lilian Fuller">
+                          <img src="../sneat/assets/img/avatars/5.png" alt="Avatar" class="rounded-circle">
+                        </li>
+                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Sophia Wilkerson">
+                          <img src="../sneat/assets/img/avatars/6.png" alt="Avatar" class="rounded-circle">
+                        </li>
+                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Christina Parker">
+                          <img src="../sneat/assets/img/avatars/7.png" alt="Avatar" class="rounded-circle">
+                        </li>
+                      </ul>
+                    </td>
+                    <td><span class="badge bg-label-info me-1">Scheduled</span></td>
+                    <td>
+                      <div class="dropdown">
+                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                          <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
                         </div>
-                        <button type="submit" class="btn btn-danger deactivate-account">Deactivate Account</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
-            <!-- / Content -->
+          </div>
 
-
-
+        </div>
 
 
 
@@ -449,6 +388,7 @@
 
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
+<script src="useres.js"></script>
 <script src="../sneat/assets/vendor/libs/jquery/jquery.js"></script>
 <script src="../sneat/assets/vendor/libs/popper/popper.js"></script>
 <script src="../sneat/assets/vendor/js/bootstrap.js"></script>
