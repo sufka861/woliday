@@ -1,8 +1,20 @@
 const express = require('express');
 const logger = require('morgan');
 const app = express();
-
+const mongoose = require('mongoose');
 const deliveryRouter = require('./router/delivery');
+require('dotenv').config();
+
+
+mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@woliday.vteeobu.mongodb.net/?retryWrites=true&w=majority`,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    });
+
+mongoose.connection.on('connected', () => {
+    console.log('connected to MongoDB');
+});
 
 app.use(logger("dev"));
 app.use(express.json());
