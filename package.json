@@ -48,6 +48,7 @@
     "highlight.js": "9.17.1",
     "jquery": "3.5.1",
     "masonry-layout": "4.2.1",
+    "mongoose": "^6.8.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20",
     "perfect-scrollbar": "1.5.1"

@@ -7,12 +7,11 @@ router.get('/', (req, res)=>{
     });
 });
 
-router.get('/:squad_id', (req, res)=>{
+router.get('/:squadId', (req, res)=>{
     res.status(200).json({
-        message: "Get delivery points by squad_id"
+        message: "Get delivery points by squadId"
     });
 });
-
 
 
 module.exports = router;
