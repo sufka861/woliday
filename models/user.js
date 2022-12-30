@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema({
     tel : { type : String },
     password : { type : String, required : true },
     role : { type : String, default : "volunteer" },
+    squad_id : { type : String, default : "null" }
 });
 
 module.exports = mongoose.model('User', userSchema);
