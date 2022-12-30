@@ -3,7 +3,7 @@ const User = require('../models/user');
 
 module.exports = {
     getAllUsers: (req, res) => {
-        User.find().then((users) => {
+        User.userModel.find().then((users) => {
             res.status(200).json({
                 users
             })
@@ -15,7 +15,7 @@ module.exports = {
     },
     getUserById: (req, res) => {
         const user_id = req.params.userId;
-        User.findById(user_id).then((user) => {
+        User.userModel.findById(user_id).then((user) => {
             res.status(200).json({
                 user
             })
@@ -27,7 +27,7 @@ module.exports = {
     },
     createUser: (req, res) => {
         const {name, email, tel, password, role, squad_id} = req.body;
-        const user = new User({
+        const user = new User.userModel({
             _id: new mongoose.Types.ObjectId(),
             name,
             email,
@@ -48,7 +48,7 @@ module.exports = {
     },
     updateUser: (req, res) => {
         const user_id = req.params.userId;
-        User.updateOne({_id: user_id}, req.body).then(() => {
+        User.userModel.updateOne({_id: user_id}, req.body).then(() => {
             res.status(200).json({
                 message: `update user by id: ${user_id}`
             })
@@ -60,7 +60,7 @@ module.exports = {
     },
     deleteUser: (req, res) => {
         const user_id = req.params.userId;
-        User.remove({_id : user_id}).then(()=>{
+        User.userModel.remove({_id : user_id}).then(()=>{
             res.status(200).json({
                 message: `delete user by id: ${user_id}`
             })

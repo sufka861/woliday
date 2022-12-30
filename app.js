@@ -2,10 +2,9 @@ const express = require('express');
 const logger = require('morgan');
 const app = express();
 const mongoose = require('mongoose');
-const deliveryRouter = require('./router/delivery');
+const squadRouter = require('./router/squads');
 const userRouter = require('./router/user');
 require('dotenv').config();
-
 
 mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@woliday.vteeobu.mongodb.net/?retryWrites=true&w=majority`,
     {
@@ -32,7 +31,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/delivery', deliveryRouter);
+app.use('/squad', squadRouter);
 app.use('/user', userRouter);
 
 app.use((req, res, next) => {
@@ -49,6 +48,5 @@ app.use((error, req, res, next) => {
         }
     });
 });
-
 
 module.exports = app;
