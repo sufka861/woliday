@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Squads = require('../models/squads');
+const {nextTick} = require("yarn/lib/cli");
 
 module.exports = {
     getAllSquads: (req, res) => {
@@ -13,10 +14,10 @@ module.exports = {
             })
         });
     },
-    getSquadById: (req, res) => {
+    getSquadById: (req, res,next) => {
         const squad_id = req.params.squadId;
         Squads.findById(squad_id).then((squad) => {
-            res.status(200).json({
+            return res.status(200).json({
                 squad
             })
         }).catch(error => {
@@ -24,6 +25,7 @@ module.exports = {
                 error
             })
         });
+        next();
     },
     createSquad: (req, res) => {
         const { driver, volunteer, volunteer2, families} = req.body;
@@ -45,8 +47,14 @@ module.exports = {
         });
     },
     updateSquad: (req, res) => {
+        let updateFields;
         const squad_id = req.params.squadId;
-        Squads.updateOne({_id: squad_id}, req.body).then(() => {
+        if (req.body.families){
+            updateFields = {$push: req.body}
+        }else {
+            updateFields = req.body;
+        }
+        Squads.updateOne({_id: squad_id}, updateFields).then(() => {
             res.status(200).json({
                 message: `update squad by id: ${squad_id}`
             })
@@ -67,5 +75,5 @@ module.exports = {
                 error
             })
         })
-    }
+    },
 }

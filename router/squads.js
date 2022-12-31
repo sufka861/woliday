@@ -5,7 +5,7 @@ const {
     getSquadById,
     createSquad,
     updateSquad,
-    deleteSquad
+    deleteSquad,
 } = require('../controller/squads');
 
 router.get('/', getAllSquads);
@@ -13,5 +13,4 @@ router.get('/:squadId', getSquadById);
 router.post('/', createSquad);
 router.put('/:squadId', updateSquad);
 router.delete('/:squadId', deleteSquad);
-
 module.exports = router;

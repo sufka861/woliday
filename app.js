@@ -4,6 +4,8 @@ const app = express();
 const mongoose = require('mongoose');
 const squadRouter = require('./router/squads');
 const userRouter = require('./router/user');
+const routesRouter = require('./router/routes');
+
 require('dotenv').config();
 
 mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@woliday.vteeobu.mongodb.net/?retryWrites=true&w=majority`,
@@ -33,6 +35,9 @@ app.use((req, res, next) => {
 
 app.use('/squad', squadRouter);
 app.use('/user', userRouter);
+app.use('/route',routesRouter);
+
+
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');
