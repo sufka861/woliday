@@ -1,6 +1,4 @@
-const mongoose = require('mongoose');
 const Squads = require('../models/squads');
-const Family = require('../models/families');
 
 module.exports = {
         getRoute: async (req, res) => {
@@ -10,13 +8,12 @@ module.exports = {
                 return [
                     ...accumulator,
                     {
-                        city: currentValue.city,
-                        street: currentValue.street,
-                        houseNumber: currentValue.houseNumber
+                        lat: parseFloat(currentValue.location.split(',')[0]),
+                        lng: parseFloat(currentValue.location.split(',')[1]),
                     }
                 ];
             }, []);
-
+            res.json(outputArray);
         }
 
 }

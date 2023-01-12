@@ -41,14 +41,12 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css"/>
 
-    <!-- Page CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="style-Homepage.css"/>
 
     <!-- Helpers -->
     <script src="../sneat/assets/vendor/js/helpers.js"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+   <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../sneat/assets/js/config.js"></script>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -57,7 +55,7 @@
     <link href="route.css" rel="stylesheet" />
 </head>
 
-<body>
+<body onload="initRoutePage()">
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
@@ -248,20 +246,8 @@
                                 <div class="mapouter" id="googleMap">
                                 </div>
                             </div>
-                            <form action="#" class="list-group col">
+                            <form action="#" class="list-group col" id="familiesRoute">
                                 <h3>My delivery route</h3>
-                                <label class="list-group-item">
-                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                    Bonbon toffee muffin
-                                </label>
-                                <label class="list-group-item">
-                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                    Dragée tootsie roll
-                                </label>
-                                <div class="myRouteSubmit">
-                                    <button class="btn btn-info btn-lg " onclick="calcRoute();"><i class="fas fa-map-signs"></i></button>
-                                    <button type="submit" class="btn btn-primary">Finished delivery</button>
-                                </div>
                             </form>
                             <div id="output">
                         </div>
@@ -315,9 +301,10 @@
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
 </div>
+</div>
 <!-- / Layout wrapper -->
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFtL9y4xr4B1rLc5RdIBiRv0dzEmI5u6M&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvmvP9VEgJz8dhDJsrx_aCf8w6ANZdaqk&libraries=places"></script>
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
 <script src="../sneat/assets/vendor/libs/jquery/jquery.js"></script>

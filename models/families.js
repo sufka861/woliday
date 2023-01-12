@@ -9,6 +9,7 @@ const familySchema = mongoose.Schema({
     street : { type : String, required : true },
     houseNumber : { type : Number, required : true },
     extra : { type : String },
+    location: {type: String},
 });
 
 const familyModel = mongoose.model('Families', familySchema);

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Squads = require('../models/squads');
-const {nextTick} = require("yarn/lib/cli");
 
 module.exports = {
     getAllSquads: (req, res) => {
@@ -25,7 +24,6 @@ module.exports = {
                 error
             })
         });
-        next();
     },
     createSquad: (req, res) => {
         const { driver, volunteer, volunteer2, families} = req.body;
