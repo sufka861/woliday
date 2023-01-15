@@ -41,18 +41,21 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css"/>
 
-    <!-- Page CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="style-Homepage.css"/>
 
     <!-- Helpers -->
     <script src="../sneat/assets/vendor/js/helpers.js"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+   <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../sneat/assets/js/config.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/ab2155e76b.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="route.css" rel="stylesheet" />
 </head>
 
-<body>
+<body onload="initRoutePage()">
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
@@ -240,55 +243,13 @@
                     <div class="card-body container-fluid myRoute">
                         <div class="row">
                             <div class="col-8">
-                                <div class="mapouter">
-                                    <div class="gmap_canvas">
-                                        <iframe width="100%" height="600px" id="gmap_canvas"
-                                                src="https://maps.google.com/maps?q=Tel%20aviv&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                                frameborder="0" scrolling="no" marginheight="0"
-                                                marginwidth="0"></iframe>
-                                        <a href="https://fmovies-online.net"></a><br>
-                                        <style>.mapouter {
-                                            position: relative;
-                                            text-align: right;
-                                            height: 100%;
-                                            width: 600px;
-                                        }</style>
-                                        <a href="https://www.embedgooglemap.net">embedgooglemap.net</a>
-                                        <style>.gmap_canvas {
-                                            overflow: hidden;
-                                            background: none !important;
-                                            height: 100%;
-                                            width: 600px;
-                                        }</style>
-                                    </div>
+                                <div class="mapouter" id="googleMap">
                                 </div>
                             </div>
-                            <form action="#" class="list-group col">
+                            <form action="#" class="list-group col" id="familiesRoute">
                                 <h3>My delivery route</h3>
-                                <label class="list-group-item">
-                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                    Soufflé pastry pie ice
-                                </label>
-                                <label class="list-group-item">
-                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                    Bear claw cake biscuit
-                                </label>
-                                <label class="list-group-item">
-                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                    Tart tiramisu cake
-                                </label>
-                                <label class="list-group-item">
-                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                    Bonbon toffee muffin
-                                </label>
-                                <label class="list-group-item">
-                                    <input class="form-check-input me-1" type="checkbox" value="">
-                                    Dragée tootsie roll
-                                </label>
-                                <div class="myRouteSubmit">
-                                    <button type="submit" class="btn btn-primary">Finished delivery</button>
-                                </div>
                             </form>
+                            <div id="output">
                         </div>
                     </div>
 
@@ -340,9 +301,10 @@
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
 </div>
+</div>
 <!-- / Layout wrapper -->
 
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvmvP9VEgJz8dhDJsrx_aCf8w6ANZdaqk&libraries=places"></script>
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
 <script src="../sneat/assets/vendor/libs/jquery/jquery.js"></script>
@@ -363,5 +325,6 @@
 
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="routes.js"></script>
 </body>
 </html>
