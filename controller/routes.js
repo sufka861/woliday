@@ -13,7 +13,20 @@ module.exports = {
                     }
                 ];
             }, []);
-            res.json(outputArray);
+            const outputArray2 = families.reduce((accumulator, currentValue) => {
+                return [
+                    ...accumulator,
+                    {
+                        name: currentValue.contactName,
+                        phoneNumber: currentValue.contactPhoneNumber,
+                        city: currentValue.city,
+                        street: currentValue.street,
+                        houseNumber: currentValue.houseNumber,
+                        notes: currentValue.extra,
+                    }
+                ];
+            }, []);
+            res.json({locations: outputArray,families: outputArray2});
         }
 
 }
