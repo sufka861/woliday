@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const squadRouter = require('./router/squads');
 const userRouter = require('./router/user');
 const routesRouter = require('./router/routes');
+mongoose.set("strictQuery", false);
 
 require('dotenv').config();
 

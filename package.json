@@ -37,7 +37,9 @@
     "build:prod:copy": "npx gulp build:copy --env=production",
     "watch": "npx gulp watch",
     "serve": "npx gulp serve",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "dev": "nodemon server.js"
+
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.1",
