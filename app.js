@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const express = require('express');
 const logger = require('morgan');
 const app = express();
@@ -7,6 +5,10 @@ const mongoose = require('mongoose');
 const squadRouter = require('./router/squads');
 const userRouter = require('./router/user');
 const routesRouter = require('./router/routes');
+mongoose.set("strictQuery", false);
+
+require('dotenv').config();
+
 const authRouter = require('./router/auth');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
