@@ -33,12 +33,12 @@ const groupFamiliesIntoSquads = async () => {
         for (let i = 0; i < numOfFamiliesPerSquad; i++) {
             families_per_squad.push(families.pop())
         }
-        squadsModel.findByIdAndUpdate({_id: squad._id}, {$set: {'families': families_per_squad}})
+        squadsModel.findByIdAndUpdate({_id: squad._id}, {$set: {families: families_per_squad}})
         console.log(squad.families);
 
     })
     // console.log(squads)
 }
-
+// ADD MODULU TO TAKE CARE OF EDGE CASE EXTRA FAMILIES
 
 module.exports = {groupUsersIntoSquads, groupFamiliesIntoSquads}
