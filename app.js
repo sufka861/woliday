@@ -9,6 +9,10 @@ mongoose.set("strictQuery", false);
 
 require('dotenv').config();
 
+const authRouter = require('./router/auth');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@woliday.vteeobu.mongodb.net/?retryWrites=true&w=majority`,
     {
         useNewUrlParser: true,
@@ -34,11 +38,27 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(session({
+    key: "userId",
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        expires: 600000
+    }
+}))
+
 app.use('/squad', squadRouter);
 app.use('/user', userRouter);
 app.use('/route',routesRouter);
+app.use('/auth', authRouter);
 
-
+app.use((req,res,next)=>{
+    if(req.session.id && req.cookies.userId){
+        res.redirect('/')
+    }
+    next();
+})
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');
