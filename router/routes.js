@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const {getRoute} = require('../controller/routes');
-const {getSquadById} = require("../controller/squads");
+const {} = require("../controller/auth");
 
-router.get('/:squadId',getRoute);
+// router.get('/:squadId',getRoute);
 
 
 
