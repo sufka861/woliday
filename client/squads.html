@@ -15,7 +15,7 @@
           content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
   />
 
-  <title>Users</title>
+  <title>Squads</title>
 
   <meta name="description" content="" />
 
@@ -53,7 +53,7 @@
   <script src="../sneat/assets/js/config.js"></script>
 </head>
 
-<body onload="usersLoad()">
+<body onload="squadsLoad()">
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar">
   <div class="layout-container">
@@ -229,30 +229,19 @@
       <div class="content-wrapper">
         <!-- Content -->
 
-        <div class="container-xxl flex-grow-1 container-p-y">
-          <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Volunteers</span></h4>
-
-          <div class="card-body">
-
-            <div class="card">
-              <input type="text" id="wantedUser" class="card-header" onkeyup="filter()" placeholder="Search for names.." title="Type in a name">
-              <div class="table-responsive text-nowrap">
-                <table id=usersTable class="table table-hover">
-                  <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Role</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
-                    <th>Squad Id</th>
-                  </tr>
-                  </thead>
-                  <tbody class="table-border-bottom-0">
-                  </tbody>
-                </table>
-              </div>
-            </div>
+        <h2 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Squads</span></h2>
+        <div id="filters" role="group">
+          <input type="text" id="wantedUser" onkeyup="filter()" placeholder="Search in squads.." title="Type in a name">
+          <button id="btnGroupDrop1" type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Status
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1" style="">
+            <a class="dropdown-item" onclick="byStatus('finished', true)">Finished</a>
+            <a class="dropdown-item" onclick="byStatus('finished', false)">In Progress</a>
+            <a class="dropdown-item" onclick="squadsLoad()">All</a>
           </div>
+        </div>
+        <div id="squadTbl" class="container-xxl flex-grow-1 container-p-y">
 
         </div>
       </div>

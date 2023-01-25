@@ -25,18 +25,6 @@ module.exports = {
             })
         });
     },
-    getSquadByll: (req, res,next) => {
-        const ll = req.params.ll;
-        Squads.findOne({location: ll}).then((squad) => {
-            return res.status(200).json({
-                squad
-            })
-        }).catch(error => {
-            res.status(500).json({
-                error
-            })
-        });
-    },
     createSquad: (req, res) => {
         const { driver, volunteer, volunteer2, families} = req.body;
         const squad = new Squads({
@@ -85,5 +73,18 @@ module.exports = {
                 error
             })
         })
+    },
+    getSquads: (req, res) => {
+        let {key, value} = req.params;
+        Squads.find({ [key]: value }).then((squads) => {
+            console.log(squads)
+            res.status(200).json({
+                squads
+            })
+        }).catch(error => {
+            res.status(500).json({
+                error
+            })
+        });
     },
 }
