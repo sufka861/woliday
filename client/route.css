@@ -45,3 +45,38 @@ body {
 #mode {
   color: black;
 }
+
+
+#googleMapContainer {
+  position: relative;
+}
+
+#googleMap{
+  width: 100%;
+  height: 400px;
+}
+
+#openMapBtn {
+  position: absolute;
+  right: 0;
+  bottom: -1.8rem;
+  color: #2323b1;
+  background-color: white;
+  border: unset;
+  width: auto;
+  font-size: x-small;
+}
+.list-group-item {
+  border: unset;
+}
+
+.myRouteSubmit {text-align: -webkit-match-parent;}
+
+@media (max-width: 680px) {
+  .col-4 {
+    width: 100%;
+  }
+  .col-8 {
+    width: 100%;
+  }
+}

@@ -241,16 +241,21 @@
                     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Homepage / My route</span></h4>
 
                     <div class="card-body container-fluid myRoute">
-                        <div class="row">
+                        <div id="rowDiv" class="row">
                             <div class="col-8">
-                                <div class="mapouter" id="googleMap">
+                                <div id="googleMapContainer">
+                                    <div class="mapouter" id="googleMap"></div>
+                                    <button id="openMapBtn" class="btn btn-primary">Open in Google Maps</button>
                                 </div>
+
                             </div>
+                            <div class="col-4">
                             <form action="#" class="list-group col" id="familiesRoute">
-                                <h3>My delivery route</h3>
+                                <h3>My Delivery Route</h3>
                             </form>
                             <div class="myRouteSubmit">
                                 <button type="button" id="btnFinished" disabled="true" class="btn btn-primary">Finished delivery</button>
+                            </div>
                             </div>
                             <div id="output">
                         </div>
@@ -307,7 +312,7 @@
 </div>
 <!-- / Layout wrapper -->
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvmvP9VEgJz8dhDJsrx_aCf8w6ANZdaqk&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=&libraries=places"></script>
 <!-- Core JS -->
 <!-- build:js assets/vendor/js/core.js -->
 <script src="../sneat/assets/vendor/libs/jquery/jquery.js"></script>
