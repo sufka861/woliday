@@ -54,6 +54,7 @@ app.use('/user', userRouter);
 app.use('/route',routesRouter);
 app.use('/auth', authRouter);
 app.use('/client', express.static(process.cwd() + "/client"));
+// app.use('/sneat', express.static(process.cwd() + "/sneat"));
 app.use('/', clientRouter);
 
 app.use((req,res,next)=>{
