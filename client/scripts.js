@@ -78,7 +78,6 @@ function calcRoute(data,len, families) {
             reorder(families,result.routes[0].waypoint_order,waypoints.length);
             reorder(waypoints,result.routes[0].waypoint_order,waypoints.length);
             showfamilies(families,waypoints);
-
         }
     })
 }
@@ -114,3 +113,5 @@ const filter = ()=> {
         }
     }
 }
+
+
