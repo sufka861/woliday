@@ -2,7 +2,7 @@ const Squads = require('../models/squads');
 
 module.exports = {
         getRoute: async (req, res) => {
-            const squad = await Squads.findById(req.params.squadId);
+            const squad = await Squads.findById(req.session.data.squadId);
             const families = squad.families;
             const outputArray = families.reduce((accumulator, currentValue) => {
                 return [
