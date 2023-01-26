@@ -50,8 +50,12 @@ const getSquadsByParam = async (key,value) => {
                 'Content-Type': 'application/json',
             },
         });
-        const data = await response.json();
-        return data;
+        if (response.status !== 200){
+            return {};
+        }else {
+            const data = await response.json();
+            return data;
+        }
 }
 
 const squadTable = (data)=>{
@@ -272,4 +276,20 @@ function reorder(arr, index, n) {
         index[i] = i;
     }
 }
+
+const logout = async () => {
+    const response = await fetch(`http://localhost:3000/auth/logout`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+}
+
+const logOutBtn= document.getElementById("logOutBtn");
+if (logOutBtn) {
+    logOutBtn.addEventListener('click', logout);
+}
+
 
