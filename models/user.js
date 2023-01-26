@@ -4,7 +4,7 @@ const userSchema = mongoose.Schema({
     email: {type: String, required: true},
     tel: {type: String},
     password: {type: String, required: true},
-    role: {type: String, default: "volunteer"},
+    role: {type: String, default: "none"},
     squad_id: {type: String, default: "null"}
 });
 
