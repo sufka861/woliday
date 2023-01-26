@@ -8,3 +8,40 @@
 input:focus{
     outline: none;
 }
+
+.Finished{
+    color: green;
+}
+.In-Progress{
+    color:red;
+}
+.card-header {
+    padding: 0.6rem;
+}
+
+th {
+    color: #03c3ec;
+}
+.table:not(.table-dark) th {
+    color: #03c3ec;
+}
+
+#btnGroupDrop1{
+    border: unset;
+}
+
+a:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: #717c8b;
+}
+
+#wantedUser, placeholder {
+    font-size: 1rem;
+    font-width: 400;
+    color: #8592a3;
+}
+
+.content-wrapper {
+   padding: 1.5rem;
+}

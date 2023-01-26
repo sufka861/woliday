@@ -7,7 +7,7 @@ const squadSchema = mongoose.Schema({
     volunteer : { type : User.userSchema },
     volunteer2 : { type : User.userSchema },
     families : [Families.familySchema],
-    finished : {type: Boolean}
+    finished: { type: Boolean, default: false }
 });
 const squadsModel = mongoose.model('Squads', squadSchema);
 module.exports = squadsModel;

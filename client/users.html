@@ -15,7 +15,7 @@
           content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
   />
 
-  <title>template</title>
+  <title>Users</title>
 
   <meta name="description" content="" />
 
@@ -53,7 +53,7 @@
   <script src="../sneat/assets/js/config.js"></script>
 </head>
 
-<body>
+<body onload="usersLoad()">
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar">
   <div class="layout-container">
@@ -161,7 +161,7 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
               <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                 <div class="avatar avatar-online">
-                  <img src="https://avatars.githubusercontent.com/u/31104053?v=4" alt class="w-px-40 h-auto rounded-circle" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt class="w-px-40 h-auto rounded-circle" />
                 </div>
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
@@ -170,7 +170,7 @@
                     <div class="d-flex">
                       <div class="flex-shrink-0 me-3">
                         <div class="avatar avatar-online">
-                          <img src="https://avatars.githubusercontent.com/u/31104053?v=4" alt class="w-px-40 h-auto rounded-circle" />
+                          <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt class="w-px-40 h-auto rounded-circle" />
                         </div>
                       </div>
                       <div class="flex-grow-1">
@@ -211,9 +211,9 @@
                 </li>
                 <li>
 
-                  <a class="dropdown-item" href="login.html">
+                  <a id=logOutBtn" class="dropdown-item" href="login.html">
                     <i class="bx bx-power-off me-2"></i>
-                    <span class="align-middle">Log Out</span>
+                    <span class="align-middle">Logout</span>
                   </a>
                 </li>
               </ul>
@@ -241,94 +241,13 @@
                   <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th>Role</th>
                     <th>Phone Number</th>
-                    <th>Squad ID</th>
-                    <th>Actions</th>
+                    <th>Email</th>
+                    <th>Squad Id</th>
                   </tr>
                   </thead>
                   <tbody class="table-border-bottom-0">
-                  <tr>
-                    <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>VueJs Project</strong></td>
-                    <td>roro Baker</td>
-                    <td>
-                      <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Lilian Fuller">
-                          <img src="../sneat/assets/img/avatars/5.png" alt="Avatar" class="rounded-circle">
-                        </li>
-                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Sophia Wilkerson">
-                          <img src="../sneat/assets/img/avatars/6.png" alt="Avatar" class="rounded-circle">
-                        </li>
-                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Christina Parker">
-                          <img src="../sneat/assets/img/avatars/7.png" alt="Avatar" class="rounded-circle">
-                        </li>
-                      </ul>
-                    </td>
-                    <td><span class="badge bg-label-info me-1">Scheduled</span></td>
-                    <td>
-                      <div class="dropdown">
-                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                          <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>filterect</strong></td>
-                    <td>Trevor Baker</td>
-                    <td>
-                      <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Lilian Fuller">
-                          <img src="../sneat/assets/img/avatars/5.png" alt="Avatar" class="rounded-circle">
-                        </li>
-                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Sophia Wilkerson">
-                          <img src="../sneat/assets/img/avatars/6.png" alt="Avatar" class="rounded-circle">
-                        </li>
-                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Christina Parker">
-                          <img src="../sneat/assets/img/avatars/7.png" alt="Avatar" class="rounded-circle">
-                        </li>
-                      </ul>
-                    </td>
-                    <td><span class="badge bg-label-info me-1">Scheduled</span></td>
-                    <td>
-                      <div class="dropdown">
-                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                          <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>VueJs Project</strong></td>
-                    <td>Trevor Baker</td>
-                    <td>
-                      <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Lilian Fuller">
-                          <img src="../sneat/assets/img/avatars/5.png" alt="Avatar" class="rounded-circle">
-                        </li>
-                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Sophia Wilkerson">
-                          <img src="../sneat/assets/img/avatars/6.png" alt="Avatar" class="rounded-circle">
-                        </li>
-                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="" data-bs-original-title="Christina Parker">
-                          <img src="../sneat/assets/img/avatars/7.png" alt="Avatar" class="rounded-circle">
-                        </li>
-                      </ul>
-                    </td>
-                    <td><span class="badge bg-label-info me-1">Scheduled</span></td>
-                    <td>
-                      <div class="dropdown">
-                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                          <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
                   </tbody>
                 </table>
               </div>
@@ -336,9 +255,6 @@
           </div>
 
         </div>
-
-
-
       </div>
       <!-- / Content -->
 
@@ -382,7 +298,6 @@
 
 <!-- Overlay -->
 <div class="layout-overlay layout-menu-toggle"></div>
-</div>
 <!-- / Layout wrapper -->
 
 
