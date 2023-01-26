@@ -242,9 +242,7 @@ function calcRoute(data,len, families) {
         if (status == google.maps.DirectionsStatus.OK){
             reorder(families,result.routes[0].waypoint_order,waypoints.length);
             reorder(waypoints,result.routes[0].waypoint_order,waypoints.length);
-<<<<<<< HEAD
-            showfamilies(families,waypoints);
-=======
+
             showfamilies(families);
             directionsDisplay.setDirections(result);
             for (i=0;i<waypoints.length;i++){
@@ -256,7 +254,6 @@ function calcRoute(data,len, families) {
                 markers.push(marker);
             }
             changeMarkerColor(markers)
->>>>>>> origin/develop
         }
     })
     openMapBtn(waypoints);
@@ -291,12 +288,9 @@ const logout = async () => {
 
 }
 
-<<<<<<< HEAD
-=======
 const logOutBtn= document.getElementById("logOutBtn");
 if (logOutBtn) {
     logOutBtn.addEventListener('click', logout);
 }
 
->>>>>>> origin/develop
 
