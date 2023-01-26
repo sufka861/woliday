@@ -251,7 +251,20 @@
 
                         <form action="http://localhost:3000/register.html" class = "homepage_form">
                             <button type="submit" class="btn btn-primary btn-xl">sign up for upcoming event</button>
+
+                            <div class="mb-3 col-md-4">
+                                <label class="form-label" for="role">role</label>
+                                <select id="role" class="select2 form-select" >
+                                    <option value="">Select</option>
+                                    <option value="Tel Aviv">Driver</option>
+                                    <option value="Netanya">delivery</option>
+                                    <option value="Bat Yam">packer</option>
+                                    <option value="Holon">delivery + packer</option>
+                                </select>
+                            </div>
                         </form>
+
+
 
                         <div id="carouselExample" class="carousel slide col-md-8 offset-md-2" data-bs-ride="carousel">
                             <ol class="carousel-indicators">
