@@ -242,6 +242,7 @@ function calcRoute(data,len, families) {
         if (status == google.maps.DirectionsStatus.OK){
             reorder(families,result.routes[0].waypoint_order,waypoints.length);
             reorder(waypoints,result.routes[0].waypoint_order,waypoints.length);
+
             showfamilies(families);
             directionsDisplay.setDirections(result);
             for (i=0;i<waypoints.length;i++){
