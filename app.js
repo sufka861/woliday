@@ -49,18 +49,20 @@ app.use(session({
     }
 }))
 
+app.use('/client', express.static(process.cwd() + "/client"));
+
+app.use((req,res,next)=>{
+    if(!(req.session.id && req.cookies.userId)){
+        res.redirect('http://localhost:3000/client/login.html')
+    }
+})
+
 app.use('/squad', squadRouter);
 app.use('/user', userRouter);
 app.use('/route',routesRouter);
 app.use('/auth', authRouter);
-app.use('/client', express.static(process.cwd() + "/client"));
 app.use('/', clientRouter);
 
-app.use((req,res,next)=>{
-    if(req.session.id && req.cookies.userId){
-        res.redirect('/')
-    }
-})
 
 
 
