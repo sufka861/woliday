@@ -44,3 +44,28 @@
     height: 700px;
     width: 100%;
 }
+#signUpEventForm {
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#signUpEventForm .mb-3 {
+    margin: 0 auto;
+}
+
+.eventSignUpButton{
+    width: 100%;
+}
+
+.required {
+    color: red;
+}
+
+.showSelect{
+    background: #8e9baa;
+    margin-right: 7px;
+    padding: 5px;
+    border-radius: 20px ;
+    color: whitesmoke;
+}

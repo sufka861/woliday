@@ -50,6 +50,7 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="http://localhost:3000/sneat//assets/js/config.js"></script>
+    <script src="script-homePage.js"></script>
 </head>
 
 <body>
@@ -216,7 +217,7 @@
                                 </li>
                                 <li>
 
-                                    <a id=logOutBtn" class="dropdown-item" href="login.html">
+                                    <a id=logOutBtn" class="dropdown-item" href="login">
                                         <i class="bx bx-power-off me-2"></i>
                                         <span class="align-middle">Logout</span>
                                     </a>
@@ -249,22 +250,53 @@
                                 Woliday</a>
                         </div>
 
-                        <form action="http://localhost:3000/register.html" class = "homepage_form">
-                            <button type="submit" class="btn btn-primary btn-xl">sign up for upcoming event</button>
+                        <form class = "homepage_form">
+                            <button type="button" id="signUpEventShow" class="btn btn-primary btn-xl" onclick="signUpEventShowForm()" >sign up for upcoming event</button>
 
-                            <div class="mb-3 col-md-4">
-                                <label class="form-label" for="role">role</label>
-                                <select id="role" class="select2 form-select" >
+                            <div class="card mb-4" id="signUpEventForm">
+                                <h5 class="card-header">Event Details</h5>
+                                <div class="card-body">
+
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="role">role<span class="required"> *</span></label>
+                                <select id="role" class="select2 form-select" required >
                                     <option value="">Select</option>
-                                    <option value="Tel Aviv">Driver</option>
-                                    <option value="Netanya">delivery</option>
-                                    <option value="Bat Yam">packer</option>
-                                    <option value="Holon">delivery + packer</option>
+                                    <option value="driver">Driver</option>
+                                    <option value="volunteer">delivery</option>
+                                    <option value="packer">packer</option>
+                                    <option value="volunteer">delivery + packer</option>
                                 </select>
                             </div>
+
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="area">division area</label>
+                                <select id="area" class="select2 form-select" onchange="showSelectArea()">
+                                    <option value="">Select</option>
+                                    <option value="Tel Aviv">Tel Aviv</option>
+                                    <option value="Netanya">Netanya</option>
+                                    <option value="Bat Yam">Bat Yam</option>
+                                    <option value="Holon">Holon</option>
+                                    <option value="Rishon Lezion">Rishon Lezion</option>
+                                </select>
+                            </div>
+                                    <div id="areaSelect"></div>
+
+                            <div class="mb-3 col-md-6">
+                                <label for="language" class="form-label">Language</label>
+                                <select id="language" class="select2 form-select" onchange="showSelectLanguage()">
+                                    <option value="">Select Language</option>
+                                    <option value="Hebrew">Hebrew</option>
+                                    <option value="English">English</option>
+                                    <option value="French">French</option>
+                                    <option value="German">German</option>
+                                    <option value="Portuguese">Portuguese</option>
+                                </select>
+                            </div>
+                                    <div id="languageSelect"></div>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-xl eventSignUpButton" onclick="signUpEvent()">sign up</button>
+                            </div>
                         </form>
-
-
 
                         <div id="carouselExample" class="carousel slide col-md-8 offset-md-2" data-bs-ride="carousel">
                             <ol class="carousel-indicators">
@@ -385,5 +417,6 @@
 
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+
 </body>
 </html>
