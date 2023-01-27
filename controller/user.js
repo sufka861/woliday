@@ -16,7 +16,7 @@ module.exports = {
         });
     },
     getUserById: (req, res) => {
-        const user_id = req.params.userId;
+        const user_id = req.session.data._id;
         User.userModel.findById(user_id).then((user) => {
             res.status(200).json({
                 user

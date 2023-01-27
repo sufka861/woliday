@@ -7,14 +7,6 @@ const signUpEventShowForm = () => {
     signUpEventBth.style.display = 'none';
 }
 
-const signUpEventHideForm = () => {
-    const signUpEvent = document.getElementById("signUpEventForm");
-    const signUpEventBth = document.getElementById("signUpEventShow");
-
-    signUpEvent.style.display = 'none';
-    signUpEventBth.style.display = 'inline-block';
-}
-
 
 const signUpEvent = async () => {
     const signUpEvent = document.getElementById("signUpEventForm");
@@ -84,4 +76,69 @@ const createSelect = (name) => {
        newSpan.remove();
     })
     return newSpan;
+}
+
+const getUser = async () => {
+    const response = await fetch(`http://localhost:3000/user/details`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    const body = await response.json();
+    if (response.status !== 200) {
+        document.getElementById('firstName').value = body.name;
+        document.getElementById('email').value = body.email;
+        document.getElementById('phoneNumber').value = body.tel;
+        document.getElementById('role').value = body.role;
+    }
+};
+
+const editProfile = () => {
+  const name =  document.getElementById('firstName');
+  const email =  document.getElementById('email');
+  const tel = document.getElementById('phoneNumber');
+  const role = document.getElementById('role');
+  const language = document.getElementById('language');
+  const area = document.getElementById('area');
+
+  name.removeAttribute('readonly');
+  email.removeAttribute('readonly');
+  tel.removeAttribute('readonly');
+  role.removeAttribute('disabled');
+  area.removeAttribute('disabled');
+  language.removeAttribute('disabled');
+
+  document.getElementById('saveButton').style.display = 'block';
+  document.getElementById('editButton').style.display = 'none';
+
+}
+
+const saveEditProfile = async () => {
+    const data = {
+        name: document.getElementById('firstName').value,
+        email: document.getElementById('email').value,
+        tel: document.getElementById('phoneNumber').value,
+        role: document.getElementById('role').value,
+    };
+    const response = await fetch(`http://localhost:3000/user/details`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    const body = await response.json();
+    if (response.status === 200) {
+        document.getElementById('saveButton').style.display = 'none';
+        document.getElementById('editButton').style.display = 'block';
+    }else {
+        alert(` ${message} `, 'danger', 'profileMassege');
+    }
+};
+
+const imagEdit = () =>{
+    console.log(1111)
+   const img = document.getElementById('uploadedAvatar').src
+    console.log(img)
 }
