@@ -268,8 +268,6 @@ const openMapBtn = (data) => {
     });
 }
 
-
-
 function reorder(arr, index, n) {
     var temp = [...Array(n)];
     for (let i = 0; i < n; i++) temp[index[i]] = arr[i];
@@ -308,7 +306,7 @@ const login = async () => {
     });
      const body = await response.json();
     if (response.status === 200) {
-        window.location.href = '/';
+        window.reload.href = 'http://localhost:3000/index.html';
     }
 };
 
