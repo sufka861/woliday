@@ -60,8 +60,9 @@ app.use((req,res,next)=>{
     if(req.session.id && req.cookies.userId){
         res.redirect('/')
     }
-    next();
 })
+
+
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');

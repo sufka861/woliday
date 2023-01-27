@@ -19,6 +19,8 @@ module.exports = {
             if (!correctPassword) throw new Error("Incorrect password");
 
             req.session.data = user
+            res.cookie('name',user.name);
+            res.cookie('role', user.role);
             res.status(200).json({
                 message: "You are logged in!",
             })

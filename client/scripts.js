@@ -1,3 +1,4 @@
+
 const filter = ()=> {
     let input, filter, table, tr, td, i,j, txtValue;
     input = document.getElementById("wantedUser");
@@ -292,5 +293,23 @@ const logOutBtn= document.getElementById("logOutBtn");
 if (logOutBtn) {
     logOutBtn.addEventListener('click', logout);
 }
+
+const login = async () => {
+    const data = {
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+    };
+    const response = await fetch(`http://localhost:3000/auth/login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+     const body = await response.json();
+    if (response.status === 200) {
+        window.location.href = '/';
+    }
+};
 
 

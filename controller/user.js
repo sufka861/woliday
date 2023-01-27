@@ -83,21 +83,30 @@ module.exports = {
         })
     },
     signUpToEvent: (req, res) => {
-        const date = process.env.EVENTE_DATE;
-        const lestDate = date.subtract(1, 'week');
-        if(lestDate.getTime() < date.getTime()){
+        const { role } = req.body;
+
+        if(!role) {
+            res.status(402).json({message: 'Please select a role'})
+            return;
+        }
+        const today = new Date();
+        const eventDate = new Date(process.env.EVENT_DATE);
+        eventDate.setDate(eventDate.getDate() - 7);
+
+        if (eventDate < today) {
             res.status(500).json({
                 message: 'The registration date has closed'
-        })
+            });
+            return;
         }
-        User.userModel.updateOne({_id: req.session.data.email}, req.body).then(() => {
-            res.status(200).json({
-                message: `update user by id: ${user_id}`
-            })
-        }).catch(error => {
-            res.status(500).json({
-                error
-            })
-        })
+        User.userModel.findOneAndUpdate({ email: req.session.data.email }, { role: role }, (error, user) => {
+            if (error) {
+                res.status(500).json({ error });
+            } else {
+                res.status(200).json({
+                    message: `update user by email: ${req.session.data.email}`
+                });
+            }
+        });
     }
 }
