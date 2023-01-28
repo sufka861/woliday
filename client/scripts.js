@@ -1,3 +1,4 @@
+
 const filter = ()=> {
     let input, filter, table, tr, td, i,j, txtValue;
     input = document.getElementById("wantedUser");
@@ -113,20 +114,20 @@ const squadTable = (data)=>{
 
 let myLatLng = { lat:32.099308390571736, lng: 34.82521696036913 };
 let endLatLng = {lat: 32.10083953947424, lng: 34.82644780955043};
-
-let mapOptions = {
-    center: myLatLng,
-    zoom: 14,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-};
-
-//create map
-let map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
-const googleMap = document.getElementById('googleMap');
-let directionsService = new google.maps.DirectionsService();
-let directionsDisplay = new google.maps.DirectionsRenderer();
-
-directionsDisplay.setMap(map);
+//
+// let mapOptions = {
+//     center: myLatLng,
+//     zoom: 14,
+//     mapTypeId: google.maps.MapTypeId.ROADMAP
+// };
+//
+// //create map
+// let map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+// const googleMap = document.getElementById('googleMap');
+// let directionsService = new google.maps.DirectionsService();
+// let directionsDisplay = new google.maps.DirectionsRenderer();
+//
+// directionsDisplay.setMap(map);
 
 const initRoutePage= ()=> {
     calcRouteMap();
@@ -182,8 +183,8 @@ const finishRoute = async () => {
     //handle response
 }
 
-const btnFinished = document.getElementById("btnFinished");
-btnFinished.addEventListener('click', finishRoute)
+// const btnFinished = document.getElementById("btnFinished");
+// btnFinished.addEventListener('click', finishRoute)
 
 
 const checkboxFunc= ()=> {
@@ -292,5 +293,23 @@ const logOutBtn= document.getElementById("logOutBtn");
 if (logOutBtn) {
     logOutBtn.addEventListener('click', logout);
 }
+
+const login = async () => {
+    const data = {
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+    };
+    const response = await fetch(`http://localhost:3000/auth/login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+     const body = await response.json();
+    if (response.status === 200) {
+        window.location.href = 'http://localhost:3000/client/index.html';
+    }
+};
 
 

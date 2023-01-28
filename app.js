@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const squadRouter = require('./router/squads');
 const userRouter = require('./router/user');
 const routesRouter = require('./router/routes');
+const clientRouter = require('./router/client');
 mongoose.set("strictQuery", false);
 
 require('dotenv').config();
@@ -47,18 +48,24 @@ app.use(session({
         expires: 60000000
     }
 }))
-
-app.use('/squad', squadRouter);
-app.use('/user', userRouter);
-app.use('/route',routesRouter);
 app.use('/auth', authRouter);
+app.use('/client', express.static(process.cwd() + "/client"));
 
 app.use((req,res,next)=>{
-    if(req.session.id && req.cookies.userId){
-        res.redirect('/')
+    if(!(req.session.id && req.cookies.userId)){
+        res.redirect('http://localhost:3000/client/login.html')
     }
     next();
 })
+
+app.use('/', clientRouter);
+app.use('/squad', squadRouter);
+app.use('/user', userRouter);
+app.use('/route',routesRouter);
+
+
+
+
 
 app.use((req, res, next) => {
     const error = new Error('Not Found');

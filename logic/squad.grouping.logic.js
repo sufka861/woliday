@@ -9,7 +9,7 @@ const groupUsersIntoSquads = async () => {
         return user.role === "driver";
     })
     const nonDrivers = users.filter((user) => {
-        return user.role !== "driver";
+        return user.role === "volunteer";
     })
     drivers.forEach((driver) => {
         const squad = new Squads({
