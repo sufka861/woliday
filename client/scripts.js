@@ -2,14 +2,20 @@ const avatar = document.getElementById('avatar');
 const avatarDropdownMenu = document.getElementById('avatarDropdownMenu');
 const roleDropdownMenu = document.getElementById('dropdownRole');
 const nameDropdownMenu = document.getElementById('dropdownName');
-const decodedImgCookie =  getCookie('img').replace(/%3A/g, ':').replace(/%2F/g, '/');
 
+if (getCookie('img'))
+{
+    const decodedImgCookie = getCookie('img').replace(/%3A/g, ':').replace(/%2F/g, '/');
+}
+else {
+    const decodedImgCookie = "undefined"
+}
 
-if(avatar){
-    if(decodedImgCookie !== "undefined") {
+if (avatar) {
+    if (decodedImgCookie !== "undefined") {
         avatar.src = decodedImgCookie;
         avatarDropdownMenu.src = decodedImgCookie;
-    } else{
+    } else {
         avatar.src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
         avatarDropdownMenu.src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
     }
@@ -83,7 +89,7 @@ const squadTable = (data) => {
     }
     const tbl = document.querySelector("#squadTbl");
     tbl.innerHTML = "";
-    for (let i=0; i<data.length;i++) {
+    for (let i = 0; i < data.length; i++) {
         const status = data[i].finished == true ? 'Finished' : 'In-Progress'
         let vol2 = "";
         if (data[i].volunteer2) {
@@ -167,22 +173,21 @@ const login = async () => {
 };
 
 
-
 const EventRegistrationButton = () => {
     const signUpEventBth = document.getElementById("signUpEventShow");
     const creatingGroupsButton = document.getElementById("creatingGroupsButton");
     const role = getCookie('role');
-    if(role !== 'none') {
+    if (role !== 'none') {
         signUpEventBth.style.display = 'inline-block';
         signUpEventBth.innerText = 'You have registered for the upcoming event';
         signUpEventBth.disabled = true
         creatingGroupsButton.style.display = 'none'
     }
-    if(role === 'admin'){
+    if (role === 'admin') {
         creatingGroupsButton.style.display = 'inline-block';
         signUpEventBth.style.display = 'none';
-        if (creatingGroupsButton.value === 1)  creatingGroupsButton.disabled = true
-            }
+        if (creatingGroupsButton.value === 1) creatingGroupsButton.disabled = true
+    }
 }
 
 const signUpEventShowForm = () => {
@@ -213,9 +218,9 @@ const signUpEvent = async () => {
         signUpEventBth.style.display = 'inline-block';
         signUpEventBth.innerText = 'You have registered for the upcoming event';
         signUpEventBth.disabled = true;
-    }else {
+    } else {
         let message = body.message;
-        if(!message) message = 'Your registration was not accepted. Please try again later'
+        if (!message) message = 'Your registration was not accepted. Please try again later'
         alert(` ${message} `, 'danger', 'signUpEventForm');
     }
 };
@@ -233,16 +238,16 @@ const alert = (message, type, id) => {
     alertPlaceholder.append(wrapper);
 };
 
-const showSelectArea= () => {
+const showSelectArea = () => {
     const select = document.getElementById("area").value;
     const span = createSelect(select);
-    if(span)
+    if (span)
         document.getElementById("areaSelect").appendChild(span);
 }
-const showSelectLanguage= () => {
+const showSelectLanguage = () => {
     const select = document.getElementById("language").value;
     const span = createSelect(select);
-    if(span)
+    if (span)
         document.getElementById("languageSelect").appendChild(span);
 }
 
@@ -256,7 +261,7 @@ const createSelect = (name) => {
     const newSpan = document.createElement("span");
     newSpan.innerHTML = name + ' X';
     newSpan.className = "showSelect"
-    newSpan.addEventListener('click',() => {
+    newSpan.addEventListener('click', () => {
         newSpan.remove();
     })
     return newSpan;
@@ -276,14 +281,14 @@ const getUser = async () => {
         document.getElementById('email').value = body.user.email;
         document.getElementById('phoneNumber').value = body.user.tel;
         document.getElementById('role').value = body.user.role;
-        if(decodedImgCookie) img.src = decodedImgCookie;
-        if(!decodedImgCookie) img.src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+        if (decodedImgCookie) img.src = decodedImgCookie;
+        if (!decodedImgCookie) img.src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
     }
 };
 
 const editProfile = () => {
-    const name =  document.getElementById('firstName');
-    const email =  document.getElementById('email');
+    const name = document.getElementById('firstName');
+    const email = document.getElementById('email');
     const tel = document.getElementById('phoneNumber');
     const role = document.getElementById('role');
     const language = document.getElementById('language');
@@ -318,7 +323,7 @@ const saveEditProfile = async () => {
     if (response.status === 200) {
         document.getElementById('saveButton').style.display = 'none';
         document.getElementById('editButton').style.display = 'block';
-    }else {
+    } else {
         alert(` ${message} `, 'danger', 'profileMassege');
     }
 };
@@ -333,3 +338,18 @@ function getCookie(name) {
     }
 }
 
+const creatingGroups = async () => {
+    const response = await fetch(`http://localhost:3000/squad/groupSquads`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    if (response.status === 200) {
+        const creatingGroupsButton = document.getElementById("creatingGroupsButton");
+        creatingGroupsButton.value = 1;
+        creatingGroupsButton.disabled = true
+    } else {
+        console.log("ERROR FAILED TO CREATE GROUPS");
+    }
+}
