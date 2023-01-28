@@ -10,6 +10,7 @@ const transporter = node.createTransport(smtp({
         pass: process.env.email,
     },
 }));
+
 const sendEmail = async (dataMail, details) => {
     const data = await ejs.renderFile(process.cwd() + dataMail.path, details);
     const mainOptions = {
@@ -26,7 +27,7 @@ const sendEmail = async (dataMail, details) => {
     });
 };
 
-const sendEmailEvent = async (user, squads) => {
+const sendEmailEvent = async (user, squad) => {
     const mailData = {
         path: '/sendEmail/sendEmail.ejs',
         subject: 'Volunteer Approval',
@@ -34,15 +35,15 @@ const sendEmailEvent = async (user, squads) => {
     };
     const details = {
         name: `${user.name}`,
-        volunteerName: `${squads.driver.name}`,
-        volunteerTel: `${squads.driver.tel}`,
-        volunteerRole: `${squads.driver.role}`,
-        volunteer2Name: `${squads.driver.name}`,
-        volunteer2Tel: `${squads.driver.tel}`,
-        volunteer2Role: `${squads.driver.role}`,
-        volunteer3Name: `${squads.driver.name}`,
-        volunteer3Tel: `${squads.driver.tel}`,
-        volunteer3Role: `${squads.driver.role}`,
+        volunteerName: `${squad.driver.name}`,
+        volunteerTel: `${squad.driver.tel}`,
+        volunteerRole: `${squad.driver.role}`,
+        volunteer2Name: `${squad.driver.name}`,
+        volunteer2Tel: `${squad.driver.tel}`,
+        volunteer2Role: `${squad.driver.role}`,
+        volunteer3Name: `${squad.driver.name}`,
+        volunteer3Tel: `${squad.driver.tel}`,
+        volunteer3Role: `${squad.driver.role}`,
     };
     await sendEmail(mailData, details);
 };

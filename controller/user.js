@@ -16,8 +16,8 @@ module.exports = {
         });
     },
     getUserById: (req, res) => {
-        const user_id = req.session.data._id;
-        User.userModel.findById(user_id).then((user) => {
+        const userEmail = req.session.data.email;
+        User.userModel.findById(userEmail).then((user) => {
             res.status(200).json({
                 user
             })
@@ -84,7 +84,6 @@ module.exports = {
     },
     signUpToEvent: (req, res) => {
         const { role } = req.body;
-
         if(!role) {
             res.status(402).json({message: 'Please select a role'})
             return;

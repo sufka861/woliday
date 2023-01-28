@@ -34,6 +34,9 @@ module.exports = {
             if(err) {
                 res.send({ message: "Error while destroying session"});
             } else {
+                res.clearCookie('name');
+                res.clearCookie('role');
+                res.clearCookie('userId');
                 res.send({ message: "Session destroyed"});
             }
         });

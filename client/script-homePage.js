@@ -1,4 +1,14 @@
 
+
+const EventRegistrationButton = () => {
+    const signUpEventBth = document.getElementById("signUpEventShow");
+    if(getCookie('role') !== 'none') {
+        signUpEventBth.style.display = 'inline-block';
+        signUpEventBth.innerText = 'You have registered for the upcoming event';
+        signUpEventBth.disabled = true;
+    }
+}
+
 const signUpEventShowForm = () => {
     const signUpEvent = document.getElementById("signUpEventForm");
     const signUpEventBth = document.getElementById("signUpEventShow");
@@ -6,7 +16,6 @@ const signUpEventShowForm = () => {
     signUpEvent.style.display = 'block';
     signUpEventBth.style.display = 'none';
 }
-
 
 const signUpEvent = async () => {
     const signUpEvent = document.getElementById("signUpEventForm");
@@ -47,7 +56,6 @@ const alert = (message, type, id) => {
 
     alertPlaceholder.append(wrapper);
 };
-const area = document.getElementById("area");
 
 const showSelectArea= () => {
     const select = document.getElementById("area").value;
@@ -111,7 +119,6 @@ const editProfile = () => {
 
   document.getElementById('saveButton').style.display = 'block';
   document.getElementById('editButton').style.display = 'none';
-
 }
 
 const saveEditProfile = async () => {
@@ -137,8 +144,12 @@ const saveEditProfile = async () => {
     }
 };
 
-const imagEdit = () =>{
-    console.log(1111)
-   const img = document.getElementById('uploadedAvatar').src
-    console.log(img)
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        return parts.pop()
+            .split(';')
+            .shift();
+    }
 }
