@@ -1,3 +1,22 @@
+const avatar = document.getElementById('avatar');
+const avatarDropdownMenu = document.getElementById('avatarDropdownMenu');
+const roleDropdownMenu = document.getElementById('dropdownRole');
+const nameDropdownMenu = document.getElementById('dropdownName');
+const decodedImgCookie =  getCookie('img').replace(/%3A/g, ':').replace(/%2F/g, '/');
+
+
+if(avatar){
+    if(decodedImgCookie !== "undefined") {
+        avatar.src = decodedImgCookie;
+        avatarDropdownMenu.src = decodedImgCookie;
+    } else{
+        avatar.src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+        avatarDropdownMenu.src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+    }
+    nameDropdownMenu.innerText = getCookie('name').replace(/%20/g, ' ');
+    roleDropdownMenu.innerText = getCookie('role');
+}
+
 const filter = () => {
     let input, filter, table, tr, td, i, j, txtValue;
     input = document.getElementById("wantedUser");
@@ -27,7 +46,6 @@ const byStatus = (key, value) => {
     getSquadsByParam(key, value).then(data => {
         const tbl = document.querySelector("#squadTbl");
         tbl.innerHTML = "";
-        console.log(data)
         squadTable(data);
     })
 }
@@ -40,7 +58,7 @@ const getSquadsByParam = async (key, value) => {
         },
     });
     const data = await response.json();
-    return data;
+    return data.squads;
 }
 
 
@@ -55,33 +73,31 @@ const getSquads = async () => {
         return {};
     } else {
         const data = await response.json();
-        return data;
+        return data.squad;
     }
 }
 
 const squadTable = (data) => {
-    // console.log("data: "+ data.squad);
+    if (!Array.isArray(data)) {
+        data = [data];
+    }
     const tbl = document.querySelector("#squadTbl");
     tbl.innerHTML = "";
-    let myArray = Object.keys(data.squads).map(function (key) {
-        return {[key]: data.squads[key]};
-    });
-    console.log("myArray: "+ myArray);
-    for (const squad of myArray) {
-        const status = squad.finished == true ? 'Finished' : 'In-Progress'
+    for (let i=0; i<data.length;i++) {
+        const status = data[i].finished == true ? 'Finished' : 'In-Progress'
         let vol2 = "";
-        if (squad.volunteer2) {
+        if (data[i].volunteer2) {
             vol2 = `<tr>
-            <td><strong>${squad.volunteer2.name}</strong></td>
-            <td>${squad.volunteer2.role}</td>
-            <td>${squad.volunteer2.tel}</td>
-            <td>${squad.volunteer2.email}</td>
+            <td><strong>${data[i].volunteer2.name}</strong></td>
+            <td>${data[i].volunteer2.role}</td>
+            <td>${data[i].volunteer2.tel}</td>
+            <td>${data[i].volunteer2.email}</td>
         </tr>`
         }
         let test =
             `<div class="card-body">
           <div class="card">
-              <h6 class="card-header">Squad Id: ${squad._id}
+              <h6 class="card-header">Squad Id: ${data[i]._id}
               <h6 class="card-header ${status}">Status: ${status}</h6>
               <div id="squadsTable" class="table-responsive text-nowrap">
                 <table class="table table-hover">
@@ -95,16 +111,16 @@ const squadTable = (data) => {
                   </thead>
                   <tbody class="table-border-bottom-0">
                   <tr>
-                    <td><strong>${squad.driver.name}</strong></td>
-                    <td>${squad.driver.role}</td>
-                    <td>${squad.driver.tel}</td>
-                    <td>${squad.driver.email}</td>
+                    <td><strong>${data[i].driver.name}</strong></td>
+                    <td>${data[i].driver.role}</td>
+                    <td>${data[i].driver.tel}</td>
+                    <td>${data[i].driver.email}</td>
                     </tr>
                      <tr>
-                    <td><strong>${squad.volunteer.name}</strong></td>
-                    <td>${squad.volunteer.role}</td>
-                    <td>${squad.volunteer.tel}</td>
-                    <td>${squad.volunteer.email}</td>
+                    <td><strong>${data[i].volunteer.name}</strong></td>
+                    <td>${data[i].volunteer.role}</td>
+                    <td>${data[i].volunteer.tel}</td>
+                    <td>${data[i].volunteer.email}</td>
                     </tr>
                     ${vol2}
                   </tbody>
@@ -154,11 +170,19 @@ const login = async () => {
 
 const EventRegistrationButton = () => {
     const signUpEventBth = document.getElementById("signUpEventShow");
-    if(getCookie('role') !== 'none') {
+    const creatingGroupsButton = document.getElementById("creatingGroupsButton");
+    const role = getCookie('role');
+    if(role !== 'none') {
         signUpEventBth.style.display = 'inline-block';
         signUpEventBth.innerText = 'You have registered for the upcoming event';
-        signUpEventBth.disabled = true;
+        signUpEventBth.disabled = true
+        creatingGroupsButton.style.display = 'none'
     }
+    if(role === 'admin'){
+        creatingGroupsButton.style.display = 'inline-block';
+        signUpEventBth.style.display = 'none';
+        if (creatingGroupsButton.value === 1)  creatingGroupsButton.disabled = true
+            }
 }
 
 const signUpEventShowForm = () => {
@@ -239,6 +263,7 @@ const createSelect = (name) => {
 }
 
 const getUser = async () => {
+    const img = document.getElementById('uploadedAvatar');
     const response = await fetch(`http://localhost:3000/user/details`, {
         method: 'GET',
         headers: {
@@ -251,6 +276,8 @@ const getUser = async () => {
         document.getElementById('email').value = body.user.email;
         document.getElementById('phoneNumber').value = body.user.tel;
         document.getElementById('role').value = body.user.role;
+        if(decodedImgCookie) img.src = decodedImgCookie;
+        if(!decodedImgCookie) img.src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
     }
 };
 
@@ -305,6 +332,4 @@ function getCookie(name) {
             .shift();
     }
 }
-
-
 

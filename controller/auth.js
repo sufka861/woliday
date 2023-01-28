@@ -21,9 +21,10 @@ module.exports = {
             req.session.data = user
             res.cookie('name',user.name);
             res.cookie('role', user.role);
+            res.cookie('img', user.img);
             res.status(200).json({
                 message: "You are logged in!",
-            })
+               })
         } catch (err) {
             res.status(401).json({message: err.message });
         }

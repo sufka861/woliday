@@ -16,11 +16,9 @@ module.exports = {
             });
         }
         if (req.session.data.role === 'admin'){
-            console.log(req.session.data.role)
-            Squads.find().then((squads) => {
-                console.log(req.session.data)
+            Squads.find().then((squad) => {
                 res.status(200).json({
-                    squads
+                    squad
                 })
             }).catch(error => {
                 res.status(500).json({

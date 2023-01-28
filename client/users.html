@@ -19,8 +19,11 @@
 
   <meta name="description" content="" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="http://localhost:3000/client/sneat/assets/img/favicon/favicon.ico" />
+   <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="image/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon-16x16.png">
+    <link rel="manifest" href="image/site.webmanifest">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -61,7 +64,7 @@
 
     <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
       <div class="app-brand demo">
-        <a href="http://localhost:3000/client/sneat/html/index.html" class="app-brand-link">
+        <a href="http://localhost:3000/index.html" class="app-brand-link">
           <img src="http://localhost:3000/client/image/Woliday_nobackground.svg">
         </a>
 
@@ -101,7 +104,7 @@
         <!-- Misc -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
         <li class="menu-item">
-          <a href="http://localhost:3000/client/sneat/html/index.html" class="menu-link">
+          <a href="http://localhost:3000/index.html" class="menu-link">
             <i class="menu-icon tf-icons bx bx-cog me-2"></i>
             <div data-i18n="Analytics">Settings</div>
           </a>
@@ -161,7 +164,7 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
               <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                 <div class="avatar avatar-online">
-                  <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt class="w-px-40 h-auto rounded-circle" />
+                  <img id= "avatarDropdownMenu" src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt class="w-px-40 h-auto rounded-circle" />
                 </div>
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
@@ -170,12 +173,12 @@
                     <div class="d-flex">
                       <div class="flex-shrink-0 me-3">
                         <div class="avatar avatar-online">
-                          <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt class="w-px-40 h-auto rounded-circle" />
+                          <img id="avatar" src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt class="w-px-40 h-auto rounded-circle" />
                         </div>
                       </div>
                       <div class="flex-grow-1">
-                        <span class="fw-semibold d-block">John Doe</span>
-                        <small class="text-muted">Admin</small>
+                        <span id='dropdownName' class="fw-semibold d-block">John Doe</span>
+                        <small id='dropdownRole' class="text-muted">Admin</small>
                       </div>
                     </div>
                   </a>
@@ -189,13 +192,13 @@
                     <span class="align-middle">My Profile</span>
                   </a>
                 </li> <li>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="http://localhost:3000/my-route.html">
                   <i class="bx bx-car me-2"></i>
                   <span class="align-middle">My Route</span>
                 </a>
               </li>
                 <li>
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="http://localhost:3000/squads.html">
                     <i class="bx bx-group me-2"></i>
                     <span class="align-middle">Squad</span>
                   </a>
