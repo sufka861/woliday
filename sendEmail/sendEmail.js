@@ -6,7 +6,7 @@ const transporter = node.createTransport(smtp({
     service: 'gmail',
     host: 'smtp.gmail.com',
     auth: {
-        user: 'woliday.shenkar@gmail.com',
+        user: 'IamTeamShenkar@gmail.com',
         pass: process.env.email,
     },
 }));
@@ -21,8 +21,9 @@ const sendEmail = async (dataMail, details) => {
     };
     await transporter.sendMail(mainOptions, (err) => {
         if (err) {
-            throw new Error('transporter error: mail was not sent');
-        } else {
+            console.log(err + 'transporter error: mail was not sent');
+        }else {
+            console.log('mail was sent')
         }
     });
 };
@@ -38,12 +39,12 @@ const sendEmailEvent = async (user, squad) => {
         volunteerName: `${squad.driver.name}`,
         volunteerTel: `${squad.driver.tel}`,
         volunteerRole: `${squad.driver.role}`,
-        volunteer2Name: `${squad.driver.name}`,
-        volunteer2Tel: `${squad.driver.tel}`,
-        volunteer2Role: `${squad.driver.role}`,
-        volunteer3Name: `${squad.driver.name}`,
-        volunteer3Tel: `${squad.driver.tel}`,
-        volunteer3Role: `${squad.driver.role}`,
+        volunteer2Name: `${squad.volunteer.name}`,
+        volunteer2Tel: `${squad.volunteer.tel}`,
+        volunteer2Role: `${squad.volunteer.role}`,
+        volunteer3Name: `${squad.volunteer2.name}`,
+        volunteer3Tel: `${squad.volunteer2.tel}`,
+        volunteer3Role: `${squad.volunteer2.role}`,
     };
     await sendEmail(mailData, details);
 };
