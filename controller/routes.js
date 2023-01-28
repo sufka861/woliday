@@ -6,8 +6,17 @@ const iconv = require('iconv-lite');
 
 module.exports = {
         getRoute: async (req, res) => {
-            const squad = await Squads.findById(req.session.data.squadId);
-            const families = squad.families;
+            let squad,families;
+            try {
+                squad = await Squads.findById(req.session.data.squad_id);
+                families = squad.families;
+                if(squad===undefined || families===undefined){
+                    throw new Error("problem getting squad id")
+                }
+            }catch(e){
+                res.status(404);
+            }
+
             const outputArray = families.reduce((accumulator, currentValue) => {
                 return [
                     ...accumulator,
