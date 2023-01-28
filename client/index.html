@@ -160,11 +160,9 @@
 
                         <!-- User -->
                         <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
-                               data-bs-toggle="dropdown">
+                            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                 <div class="avatar avatar-online">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt
-                                         class="w-px-40 h-auto rounded-circle"/>
+                                    <img id= "avatarDropdownMenu" src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt class="w-px-40 h-auto rounded-circle" />
                                 </div>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
@@ -173,13 +171,12 @@
                                         <div class="d-flex">
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar avatar-online">
-                                                    <img src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt
-                                                         class="w-px-40 h-auto rounded-circle"/>
+                                                    <img id="avatar" src="https://cdn-icons-png.flaticon.com/512/64/64572.png" alt class="w-px-40 h-auto rounded-circle" />
                                                 </div>
                                             </div>
                                             <div class="flex-grow-1">
-                                                <span class="fw-semibold d-block">John Doe</span>
-                                                <small class="text-muted">Admin</small>
+                                                <span id='dropdownName' class="fw-semibold d-block">John Doe</span>
+                                                <small id='dropdownRole' class="text-muted">Admin</small>
                                             </div>
                                         </div>
                                     </a>
@@ -188,17 +185,16 @@
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="http://localhost:3000/profilePage.html">
+                                    <a class="dropdown-item" href="#">
                                         <i class="bx bx-user me-2"></i>
                                         <span class="align-middle">My Profile</span>
                                     </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="http://localhost:3000/my-route.html">
-                                        <i class="bx bx-car me-2"></i>
-                                        <span class="align-middle">My route</span>
-                                    </a>
-                                </li>
+                                </li> <li>
+                                <a class="dropdown-item" href="http://localhost:3000/my-route.html">
+                                    <i class="bx bx-car me-2"></i>
+                                    <span class="align-middle">My Route</span>
+                                </a>
+                            </li>
                                 <li>
                                     <a class="dropdown-item" href="http://localhost:3000/squads.html">
                                         <i class="bx bx-group me-2"></i>
@@ -216,9 +212,9 @@
                                 </li>
                                 <li>
 
-                                    <a id=logOutBtn" class="dropdown-item">
+                                    <a id=logOutBtn" class="dropdown-item" href="login.html">
                                         <i class="bx bx-power-off me-2"></i>
-                                        <span class="align-middle" onclick="logout()">Logout</span>
+                                        <span class="align-middle">Logout</span>
                                     </a>
                                 </li>
                             </ul>
@@ -251,7 +247,7 @@
 
                         <form class = "homepage_form">
                             <button type="button" id="signUpEventShow" class="btn btn-primary btn-xl" onclick="signUpEventShowForm()" >sign up for upcoming event</button>
-
+                            <button type="button" id="creatingGroupsButton" value="0" class="btn btn-primary btn-xl" onclick="creatingGroups()" >group users into squads</button>
                             <div class="card mb-4" id="signUpEventForm">
                                 <h5 class="card-header">Event Details</h5>
                                 <div class="card-body">

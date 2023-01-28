@@ -6,13 +6,14 @@ const {
     createUser,
     updateUser,
     deleteUser,
-    signUpToEvent
+    signUpToEvent,
+    uploadImg,
 } = require('../controller/user');
 
 router.get('/', getAllUsers);
 router.get('/details', getUserById);
 router.post('/', createUser);
-router.put('/event',signUpToEvent)
+router.put('/event',signUpToEvent);
 router.put('/details', updateUser);
 router.delete('/:userId', deleteUser);
 

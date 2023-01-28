@@ -1,3 +1,22 @@
+const avatar = document.getElementById('avatar');
+const avatarDropdownMenu = document.getElementById('avatarDropdownMenu');
+const roleDropdownMenu = document.getElementById('dropdownRole');
+const nameDropdownMenu = document.getElementById('dropdownName');
+const decodedImgCookie =  getCookie('img').replace(/%3A/g, ':').replace(/%2F/g, '/');
+
+
+if(avatar){
+    if(decodedImgCookie !== "undefined") {
+        avatar.src = decodedImgCookie;
+        avatarDropdownMenu.src = decodedImgCookie;
+    } else{
+        avatar.src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+        avatarDropdownMenu.src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+    }
+    nameDropdownMenu.innerText = getCookie('name').replace(/%20/g, ' ');
+    roleDropdownMenu.innerText = getCookie('role');
+}
+
 const filter = () => {
     let input, filter, table, tr, td, i, j, txtValue;
     input = document.getElementById("wantedUser");
@@ -154,11 +173,19 @@ const login = async () => {
 
 const EventRegistrationButton = () => {
     const signUpEventBth = document.getElementById("signUpEventShow");
-    if(getCookie('role') !== 'none') {
+    const creatingGroupsButton = document.getElementById("creatingGroupsButton");
+    const role = getCookie('role');
+    if(role !== 'none') {
         signUpEventBth.style.display = 'inline-block';
         signUpEventBth.innerText = 'You have registered for the upcoming event';
-        signUpEventBth.disabled = true;
+        signUpEventBth.disabled = true
+        creatingGroupsButton.style.display = 'none'
     }
+    if(role === 'admin'){
+        creatingGroupsButton.style.display = 'inline-block';
+        signUpEventBth.style.display = 'none';
+        if (creatingGroupsButton.value === 1)  creatingGroupsButton.disabled = true
+            }
 }
 
 const signUpEventShowForm = () => {
@@ -239,6 +266,7 @@ const createSelect = (name) => {
 }
 
 const getUser = async () => {
+    const img = document.getElementById('uploadedAvatar');
     const response = await fetch(`http://localhost:3000/user/details`, {
         method: 'GET',
         headers: {
@@ -251,6 +279,8 @@ const getUser = async () => {
         document.getElementById('email').value = body.user.email;
         document.getElementById('phoneNumber').value = body.user.tel;
         document.getElementById('role').value = body.user.role;
+        if(decodedImgCookie) img.src = decodedImgCookie;
+        if(!decodedImgCookie) img.src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
     }
 };
 
@@ -305,6 +335,4 @@ function getCookie(name) {
             .shift();
     }
 }
-
-
 
