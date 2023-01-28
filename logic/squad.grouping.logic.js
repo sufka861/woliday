@@ -59,18 +59,19 @@ const groupFamiliesIntoSquads = async () => {
     const squads = await squadsModel.find({});
     const numOfSquads = squads.length;
     const numOfFamiliesPerSquad = numOfFamilies / numOfSquads;
-    squads.forEach((squad) => {
+    squads.forEach (async (squad) => {
         for (let i = 0; i < numOfFamiliesPerSquad; i++) {
             const family = families.pop();
-            const result = squadsModel.updateOne({_id: squad._id}, {$push : {families: family}});
+            const result = await squadsModel.updateOne({_id: squad._id}, {$push : {families: family}});
        }
     })
 }
 // const result = groupFamiliesIntoSquads();
 
+
 // // JUST FOR DEBUG
 // const deleteAllSquads = () => {
-//     Squads.deleteMany({}).then(() => {
+//     squadsModel.deleteMany({}).then(() => {
 //         console.log("deleted all squads from DB");
 //     }).catch(error => {
 //         console.log({error})
