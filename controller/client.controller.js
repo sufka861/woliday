@@ -2,7 +2,7 @@ const {URL} = require("url");
 const Path = require("path");
 const errorHandler = require("./error.controller");
 
-function loadPage(req, res) {
+function loadPage(req, res, next) {
     let pathName = new URL(req.url, `http://${req.headers.host}`).pathname;
 
     pathName =
@@ -34,7 +34,8 @@ function loadPage(req, res) {
                 });
                 break;
             default:
-                res.send();
+                next();
+
         }
         res.status(200);
     } catch (err) {

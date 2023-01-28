@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const {} = require("../controller/auth");
+const {getRoute,defineFamilies} = require('../controller/routes');
 
-// router.get('/:squadId',getRoute);
-
+router.get('/',getRoute);
+router.post('/',defineFamilies);
 
 
 module.exports = router;

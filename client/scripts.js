@@ -1,6 +1,5 @@
-
-const filter = ()=> {
-    let input, filter, table, tr, td, i,j, txtValue;
+const filter = () => {
+    let input, filter, table, tr, td, i, j, txtValue;
     input = document.getElementById("wantedUser");
     filter = input.value.toUpperCase();
     tr = document.getElementsByTagName("tr");
@@ -18,22 +17,22 @@ const filter = ()=> {
     }
 }
 
-const squadsLoad=()=> {
-    getSquads().then(data=>{
+const squadsLoad = () => {
+    getSquads().then(data => {
         squadTable(data);
     })
 }
 
-const byStatus= (key,value) =>{
-    getSquadsByParam(key,value).then(data=>{
+const byStatus = (key, value) => {
+    getSquadsByParam(key, value).then(data => {
         const tbl = document.querySelector("#squadTbl");
-        tbl.innerHTML="";
+        tbl.innerHTML = "";
         console.log(data)
         squadTable(data);
     })
 }
 
-const getSquadsByParam = async (key,value) => {
+const getSquadsByParam = async (key, value) => {
     const response = await fetch(`http://localhost:3000/squad/${key}/${value}`, {
         method: 'GET',
         headers: {
@@ -44,29 +43,35 @@ const getSquadsByParam = async (key,value) => {
     return data;
 }
 
- const getSquads = async () => {
-        const response = await fetch(`http://localhost:3000/squad`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        if (response.status !== 200){
-            return {};
-        }else {
-            const data = await response.json();
-            return data;
-        }
+
+const getSquads = async () => {
+    const response = await fetch(`http://localhost:3000/squad`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    if (response.status !== 200) {
+        return {};
+    } else {
+        const data = await response.json();
+        return data;
+    }
 }
 
-const squadTable = (data)=>{
+const squadTable = (data) => {
+    // console.log("data: "+ data.squad);
     const tbl = document.querySelector("#squadTbl");
-    tbl.innerHTML="";
-    for(const squad of data.squads){
+    tbl.innerHTML = "";
+    let myArray = Object.keys(data.squads).map(function (key) {
+        return {[key]: data.squads[key]};
+    });
+    console.log("myArray: "+ myArray);
+    for (const squad of myArray) {
         const status = squad.finished == true ? 'Finished' : 'In-Progress'
-        let vol2="";
-        if (squad.volunteer2){
-            vol2=`<tr>
+        let vol2 = "";
+        if (squad.volunteer2) {
+            vol2 = `<tr>
             <td><strong>${squad.volunteer2.name}</strong></td>
             <td>${squad.volunteer2.role}</td>
             <td>${squad.volunteer2.tel}</td>
@@ -74,7 +79,7 @@ const squadTable = (data)=>{
         </tr>`
         }
         let test =
-        `<div class="card-body">
+            `<div class="card-body">
           <div class="card">
               <h6 class="card-header">Squad Id: ${squad._id}
               <h6 class="card-header ${status}">Status: ${status}</h6>
@@ -107,12 +112,12 @@ const squadTable = (data)=>{
               </div>
             </div>
 </div>`
-        tbl.innerHTML+=test;
+        tbl.innerHTML += test;
     }
 }
 
 
-let myLatLng = { lat:32.099308390571736, lng: 34.82521696036913 };
+let myLatLng = {lat: 32.099308390571736, lng: 34.82521696036913};
 let endLatLng = {lat: 32.10083953947424, lng: 34.82644780955043};
 
 let mapOptions = {
@@ -129,7 +134,7 @@ let mapOptions = {
 //
 // directionsDisplay.setMap(map);
 
-const initRoutePage= ()=> {
+const initRoutePage = () => {
     calcRouteMap();
 }
 const calcRouteMap = async () => {
@@ -140,16 +145,16 @@ const calcRouteMap = async () => {
         },
     });
     const data = await response.json();
-    calcRoute(data.locations,data.locations.length, data.families);
+    calcRoute(data.locations, data.locations.length, data.families);
 };
 
-const showfamilies = (data)=>{
+const showfamilies = (data) => {
     const form = document.getElementById("familiesRoute");
-    for (let j=0;j<data.length;j++){
+    for (let j = 0; j < data.length; j++) {
         let address = `${data[j].city}, ${data[j].street} ${data[j].houseNumber}`;
         let name = data[j].name;
         let phone = data[j].phoneNumber;
-        addressWaze= address.replaceAll(' ', '%20');
+        addressWaze = address.replaceAll(' ', '%20');
         console.log(`https://www.waze.com/li?q=${addressWaze}&navigate=yes&zoom=17`)
         let test = `
             <label class="list-group-item">
@@ -165,7 +170,7 @@ const showfamilies = (data)=>{
             </label>
             `;
 
-        form.innerHTML+=test;
+        form.innerHTML += test;
     }
 
 }
@@ -187,8 +192,8 @@ const btnFinished = document.getElementById("btnFinished");
 // btnFinished.addEventListener('click', finishRoute)
 
 
-const checkboxFunc= ()=> {
-    let x=0;
+const checkboxFunc = () => {
+    let x = 0;
     let allBoxes = document.getElementsByClassName("routeCheck");
     for (let allBox of allBoxes) {
         if (allBox.checked) {
@@ -198,19 +203,18 @@ const checkboxFunc= ()=> {
             break;
         }
     }
-    if (x===allBoxes.length) {
+    if (x === allBoxes.length) {
         btnFinished.disabled = false;
-    }
-    else {
+    } else {
         btnFinished.disabled = true;
     }
 
 }
 
-const changeMarkerColor = function(markers) {
+const changeMarkerColor = function (markers) {
     markers.forEach((marker, index) => {
         let checkbox = document.getElementsByClassName("routeCheck")[index];
-        checkbox.addEventListener("change", function() {
+        checkbox.addEventListener("change", function () {
             if (checkbox.checked) {
                 marker.setIcon({
                     url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png",
@@ -227,11 +231,13 @@ const changeMarkerColor = function(markers) {
 
 
 let markers = [];
-function calcRoute(data,len, families) {
+
+function calcRoute(data, len, families) {
     let waypoints = [];
-    for (let i=0;i<len;i++){
+    for (let i = 0; i < len; i++) {
         waypoints.push({location: data[i]});
-    };
+    }
+    ;
     let request = {
         origin: myLatLng,
         destination: endLatLng,
@@ -239,14 +245,14 @@ function calcRoute(data,len, families) {
         waypoints: waypoints,
         optimizeWaypoints: true
     }
-    directionsService.route(request,function (result,status){
-        if (status == google.maps.DirectionsStatus.OK){
-            reorder(families,result.routes[0].waypoint_order,waypoints.length);
-            reorder(waypoints,result.routes[0].waypoint_order,waypoints.length);
+    directionsService.route(request, function (result, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            reorder(families, result.routes[0].waypoint_order, waypoints.length);
+            reorder(waypoints, result.routes[0].waypoint_order, waypoints.length);
 
             showfamilies(families);
             directionsDisplay.setDirections(result);
-            for (i=0;i<waypoints.length;i++){
+            for (i = 0; i < waypoints.length; i++) {
                 let marker = new google.maps.Marker({
                     position: waypoints[i].location,
                     map: map,
@@ -263,11 +269,10 @@ function calcRoute(data,len, families) {
 const openMapBtn = (data) => {
     let destinations = data.map(location => location.lat + "," + location.lng).join("|");
     let url = `https://www.google.com/maps?saddr=${myLatLng.lat},${myLatLng.lng}&daddr=${destinations}`;
-    document.getElementById("openMapBtn").addEventListener("click", function() {
+    document.getElementById("openMapBtn").addEventListener("click", function () {
         window.open(url, '_blank');
     });
 }
-
 
 
 function reorder(arr, index, n) {
@@ -289,7 +294,7 @@ const logout = async () => {
 
 }
 
-const logOutBtn= document.getElementById("logOutBtn");
+const logOutBtn = document.getElementById("logOutBtn");
 if (logOutBtn) {
     logOutBtn.addEventListener('click', logout);
 }
@@ -306,7 +311,7 @@ const login = async () => {
         },
         body: JSON.stringify(data),
     });
-     const body = await response.json();
+    const body = await response.json();
     if (response.status === 200) {
         window.location.href = 'http://localhost:3000/client/index.html';
     }
