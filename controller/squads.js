@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Squads = require('../models/squads');
+const {sendEmail, sendEmailEvent} = require("../sendEmail/sendEmail");
 
 module.exports = {
     getAllSquads: (req, res) => {
@@ -91,6 +92,20 @@ module.exports = {
         let {key, value} = req.params;
         Squads.find({ [key]: value }).then((squads) => {
             console.log(squads)
+            res.status(200).json({
+                squads
+            })
+        }).catch(error => {
+            res.status(500).json({
+                error
+            })
+        });
+    },
+    send: async (req, res) => {
+        const user = req.session.data
+        Squads.find({_id: user.squad_id}).then(async (squads) => {
+            console.log(squads)
+            await sendEmailEvent(user,squads)
             res.status(200).json({
                 squads
             })

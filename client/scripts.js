@@ -2,6 +2,8 @@ const avatar = document.getElementById('avatar');
 const avatarDropdownMenu = document.getElementById('avatarDropdownMenu');
 const roleDropdownMenu = document.getElementById('dropdownRole');
 const nameDropdownMenu = document.getElementById('dropdownName');
+
+
 const decodedImgCookie =  getCookie('img').replace(/%3A/g, ':').replace(/%2F/g, '/');
 
 
@@ -171,6 +173,7 @@ const login = async () => {
 const EventRegistrationButton = () => {
     const signUpEventBth = document.getElementById("signUpEventShow");
     const creatingGroupsButton = document.getElementById("creatingGroupsButton");
+
     const role = getCookie('role');
     if(role !== 'none') {
         signUpEventBth.style.display = 'inline-block';
