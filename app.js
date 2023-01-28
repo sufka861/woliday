@@ -53,7 +53,7 @@ app.use('/user', userRouter);
 app.use('/route',routesRouter);
 app.use('/auth', authRouter);
 
-<<<<<<< HEAD
+
 app.use((req,res,next)=>{
     if(req.session.id && req.cookies.userId){
         res.redirect('/')
