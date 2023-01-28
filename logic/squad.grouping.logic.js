@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const squadsModel = require('../models/squads');
 const User = require('../models/user');
 const Family = require('../models/families');
-const Squads = require("../models/squads");
+// const Squads = require("../models/squads");
 const axios = require("axios");
 
 const updateUser = async (user_id, squad_id) => {
@@ -59,24 +59,25 @@ const groupFamiliesIntoSquads = async () => {
     const squads = await squadsModel.find({});
     const numOfSquads = squads.length;
     const numOfFamiliesPerSquad = numOfFamilies / numOfSquads;
-    squads.forEach((squad) => {
+    squads.forEach (async (squad) => {
         for (let i = 0; i < numOfFamiliesPerSquad; i++) {
             const family = families.pop();
-            const result = squadsModel.updateOne({_id: squad._id}, {$push : {families: family}});
+            const result = await squadsModel.updateOne({_id: squad._id}, {$push : {families: family}});
        }
     })
 }
 // const result = groupFamiliesIntoSquads();
-//
+
+
 // // JUST FOR DEBUG
 // const deleteAllSquads = () => {
-//     Squads.deleteMany({}).then(() => {
+//     squadsModel.deleteMany({}).then(() => {
 //         console.log("deleted all squads from DB");
 //     }).catch(error => {
 //         console.log({error})
 //     })
 // }
 // deleteAllSquads();
-//
+
 
 module.exports = {groupUsersIntoSquads, groupFamiliesIntoSquads}

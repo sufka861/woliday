@@ -4,7 +4,7 @@ const roleDropdownMenu = document.getElementById('dropdownRole');
 const nameDropdownMenu = document.getElementById('dropdownName');
 
 
-const decodedImgCookie =  getCookie('img').replace(/%3A/g, ':').replace(/%2F/g, '/');
+// const decodedImgCookie =  getCookie('img').replace(/%3A/g, ':').replace(/%2F/g, '/');
 
 
 if (avatar) {
@@ -341,6 +341,20 @@ function getCookie(name) {
     }
 }
 
+const groupingFamilies = async () => {
+    const response = await fetch(`http://localhost:3000/squad/groupFamilies`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    if (response.status === 200) {
+        alert('Excellent, Families grouped into squads!', 'success', 'alertGroups');
+    } else {
+        alert('Families grouping failed', 'danger', 'alertGroups');
+    }
+}
+
 const creatingGroups = async () => {
     const response = await fetch(`http://localhost:3000/squad/groupSquads`, {
         method: 'GET',
@@ -356,4 +370,5 @@ const creatingGroups = async () => {
     } else {
         alert('Squads grouping failed', 'danger', 'alertGroups');
     }
+    const result = await groupingFamilies();
 }
