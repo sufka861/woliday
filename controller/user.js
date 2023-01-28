@@ -17,7 +17,7 @@ module.exports = {
     },
     getUserById: (req, res) => {
         const userEmail = req.session.data.email;
-        User.userModel.findById(userEmail).then((user) => {
+        User.userModel.findOne({email: userEmail}).then((user) => {
             res.status(200).json({
                 user
             })

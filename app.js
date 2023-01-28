@@ -12,6 +12,7 @@ require('dotenv').config();
 
 const authRouter = require('./router/auth');
 const session = require('express-session');
+const MemoryStore = require('memorystore')(session);
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@woliday.vteeobu.mongodb.net/?retryWrites=true&w=majority`,
@@ -42,12 +43,15 @@ app.use((req, res, next) => {
 app.use(session({
     key: "userId",
     secret: process.env.SESSION_SECRET,
+    store: new MemoryStore({
+        checkPeriod: 86400000 // prune expired entries every 24h
+    }),
     resave: false,
     saveUninitialized: true,
     cookie: {
-        expires: 60000000
+        expires: 6000000000
     }
-}))
+}));
 app.use('/auth', authRouter);
 app.use('/client', express.static(process.cwd() + "/client"));
 
