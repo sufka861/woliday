@@ -5,12 +5,8 @@ const errorHandler = require("./error.controller");
 function loadPage(req, res, next) {
     let pathName = new URL(req.url, `http://${req.headers.host}`).pathname;
 
-    pathName =
-        pathName === "/" || pathName === "/index.html"
-            ? "/index.html"
-            : pathName;
+    pathName = pathName === "/" || pathName === "/index.html" ? "/index.html" : pathName;
 
-    res.status(200);
     try {
         res.setHeader("Access-Control-Allow-Origin", "*");
 
@@ -35,9 +31,7 @@ function loadPage(req, res, next) {
                 break;
             default:
                 next();
-
         }
-        res.status(200);
     } catch (err) {
         return errorHandler(req, res, err);
     }

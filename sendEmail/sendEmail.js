@@ -3,10 +3,11 @@ const smtp = require('nodemailer-smtp-transport');
 const ejs = require('ejs');
 
 const transporter = node.createTransport(smtp({
-    service: 'gmail',
-    host: 'smtp.gmail.com',
+    port: 465,
+    host: 'smtp.zoho.com',
+    secure: true,
     auth: {
-        user: 'IamTeamShenkar@gmail.com',
+        user: process.env.emailShenkar,
         pass: process.env.email,
     },
 }));

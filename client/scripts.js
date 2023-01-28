@@ -91,6 +91,7 @@ const squadTable = (data) => {
         let vol2 = "";
         if (data[i].volunteer2) {
             vol2 = `<tr>
+<td><img src=${data[i].volunteer2.img} alt="Avatar" class="w-px-40 h-auto rounded-circle"></td>
             <td><strong>${data[i].volunteer2.name}</strong></td>
             <td>${data[i].volunteer2.role}</td>
             <td>${data[i].volunteer2.tel}</td>
@@ -106,6 +107,7 @@ const squadTable = (data) => {
                 <table class="table table-hover">
                   <thead>
                   <tr>
+                    <th>Img</th>
                     <th>Name</th>
                     <th>Role</th>
                     <th>Phone Number</th>
@@ -114,12 +116,14 @@ const squadTable = (data) => {
                   </thead>
                   <tbody class="table-border-bottom-0">
                   <tr>
+                    <td><img src=${data[i].driver.img} alt="Avatar" class="w-px-40 h-auto rounded-circle"></td>
                     <td><strong>${data[i].driver.name}</strong></td>
                     <td>${data[i].driver.role}</td>
                     <td>${data[i].driver.tel}</td>
                     <td>${data[i].driver.email}</td>
                     </tr>
                      <tr>
+                     <td><img src=${data[i].volunteer.img} alt="Avatar" class="w-px-40 h-auto rounded-circle"></td>
                     <td><strong>${data[i].volunteer.name}</strong></td>
                     <td>${data[i].volunteer.role}</td>
                     <td>${data[i].volunteer.tel}</td>
