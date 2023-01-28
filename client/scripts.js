@@ -133,7 +133,7 @@ const initRoutePage= ()=> {
     calcRouteMap();
 }
 const calcRouteMap = async () => {
-    const response = await fetch(`http://localhost:3000/route/63c6ec78c2921b45ba6fd18e`, {
+    const response = await fetch(`http://localhost:3000/route`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -171,7 +171,7 @@ const showfamilies = (data)=>{
 }
 
 const finishRoute = async () => {
-    const response = await fetch(`http://localhost:3000/squad/63c6ec78c2921b45ba6fd18e`, {
+    const response = await fetch(`http://localhost:3000/squad`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
