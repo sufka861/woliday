@@ -59,6 +59,7 @@
     "json5": "^2.2.3",
     "jsonwebtoken": "^9.0.0",
     "masonry-layout": "4.2.1",
+    "memorystore": "^1.6.7",
     "moment": "^2.29.4",
     "mongoose": "^6.8.1",
     "morgan": "^1.10.0",
