@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {
     getAllSquads,
-    getSquadById,
+    // getSquadById,
     createSquad,
     updateSquad,
     deleteSquad,
@@ -11,8 +11,8 @@ const {
 
 router.get('/', getAllSquads);
 router.get('/:key/:value', getSquads);
-router.get('/:squadId', getSquadById);
+//router.get('/:squadId', getSquadById);
 router.post('/', createSquad);
-router.put('/:squadId', updateSquad);
+router.put('/', updateSquad);
 router.delete('/:squadId', deleteSquad);
 module.exports = router;

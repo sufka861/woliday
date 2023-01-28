@@ -3,17 +3,32 @@ const Squads = require('../models/squads');
 
 module.exports = {
     getAllSquads: (req, res) => {
-        Squads.find().then((squads) => {
-            res.status(200).json({
-                squads
-            })
-        }).catch(error => {
-            res.status(500).json({
-                error
-            })
-        });
-    },
-    getSquadById: (req, res,next) => {
+        if (req.session.data.role === 'volunteer' || req.session.data.role === 'driver'){
+            Squads.findById(req.session.data.squad_id).then((squad) => {
+                return res.status(200).json({
+                    squad
+                })
+            }).catch(error => {
+                res.status(500).json({
+                    error
+                })
+            });
+        }
+        if (req.session.data.role === 'admin'){
+            console.log(req.session.data.role)
+            Squads.find().then((squads) => {
+                console.log(req.session.data)
+                res.status(200).json({
+                    squads
+                })
+            }).catch(error => {
+                res.status(500).json({
+                    error
+                })
+            });
+        }
+        },
+/*    getSquadById: (req, res,next) => {
         const squad_id = req.params.squadId;
         Squads.findById(squad_id).then((squad) => {
             return res.status(200).json({
@@ -24,7 +39,7 @@ module.exports = {
                 error
             })
         });
-    },
+    },*/
     createSquad: (req, res) => {
         const { driver, volunteer, volunteer2, families} = req.body;
         const squad = new Squads({
@@ -46,7 +61,7 @@ module.exports = {
     },
     updateSquad: (req, res) => {
         let updateFields;
-        const squad_id = req.params.squadId;
+        const squad_id = req.session.data.squad_id;
         if (req.body.families){
             updateFields = {$push: req.body}
         }else {
@@ -63,7 +78,7 @@ module.exports = {
         })
     },
     deleteSquad: (req, res) => {
-        const squad_id = req.params.squadId;
+        const squad_id = req.session.data.squad_id;
         Squads.remove({_id : squad_id}).then(()=>{
             res.status(200).json({
                 message: `delete squad by id: ${squad_id}`
