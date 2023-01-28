@@ -32,6 +32,7 @@ const calcRouteMap = async () => {
 
 const showfamilies = (data)=>{
     const form = document.getElementById("familiesRoute");
+    console.log(form)
     for (let j=0;j<data.length;j++){
         let address = `${data[j].city}, ${data[j].street} ${data[j].houseNumber}`;
         let name = data[j].name;
