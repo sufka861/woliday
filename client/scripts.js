@@ -1,5 +1,5 @@
-const filter = ()=> {
-    let input, filter, table, tr, td, i,j, txtValue;
+const filter = () => {
+    let input, filter, table, tr, td, i, j, txtValue;
     input = document.getElementById("wantedUser");
     filter = input.value.toUpperCase();
     tr = document.getElementsByTagName("tr");
@@ -17,22 +17,22 @@ const filter = ()=> {
     }
 }
 
-const squadsLoad=()=> {
-    getSquads().then(data=>{
+const squadsLoad = () => {
+    getSquads().then(data => {
         squadTable(data);
     })
 }
 
-const byStatus= (key,value) =>{
-    getSquadsByParam(key,value).then(data=>{
+const byStatus = (key, value) => {
+    getSquadsByParam(key, value).then(data => {
         const tbl = document.querySelector("#squadTbl");
-        tbl.innerHTML="";
+        tbl.innerHTML = "";
         console.log(data)
         squadTable(data);
     })
 }
 
-const getSquadsByParam = async (key,value) => {
+const getSquadsByParam = async (key, value) => {
     const response = await fetch(`http://localhost:3000/squad/${key}/${value}`, {
         method: 'GET',
         headers: {
@@ -43,29 +43,35 @@ const getSquadsByParam = async (key,value) => {
     return data;
 }
 
- const getSquads = async () => {
-        const response = await fetch(`http://localhost:3000/squad`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        if (response.status !== 200){
-            return {};
-        }else {
-            const data = await response.json();
-            return data;
-        }
+
+const getSquads = async () => {
+    const response = await fetch(`http://localhost:3000/squad`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    if (response.status !== 200) {
+        return {};
+    } else {
+        const data = await response.json();
+        return data;
+    }
 }
 
-const squadTable = (data)=>{
+const squadTable = (data) => {
+    // console.log("data: "+ data.squad);
     const tbl = document.querySelector("#squadTbl");
-    tbl.innerHTML="";
-    for(const squad of data.squads){
+    tbl.innerHTML = "";
+    let myArray = Object.keys(data.squads).map(function (key) {
+        return {[key]: data.squads[key]};
+    });
+    console.log("myArray: "+ myArray);
+    for (const squad of myArray) {
         const status = squad.finished == true ? 'Finished' : 'In-Progress'
-        let vol2="";
-        if (squad.volunteer2){
-            vol2=`<tr>
+        let vol2 = "";
+        if (squad.volunteer2) {
+            vol2 = `<tr>
             <td><strong>${squad.volunteer2.name}</strong></td>
             <td>${squad.volunteer2.role}</td>
             <td>${squad.volunteer2.tel}</td>
@@ -73,7 +79,7 @@ const squadTable = (data)=>{
         </tr>`
         }
         let test =
-        `<div class="card-body">
+            `<div class="card-body">
           <div class="card">
               <h6 class="card-header">Squad Id: ${squad._id}
               <h6 class="card-header ${status}">Status: ${status}</h6>
@@ -106,7 +112,7 @@ const squadTable = (data)=>{
               </div>
             </div>
 </div>`
-        tbl.innerHTML+=test;
+        tbl.innerHTML += test;
     }
 }
 
@@ -119,7 +125,7 @@ const logout = async () => {
     });
 }
 
-const logOutBtn= document.getElementById("logOutBtn");
+const logOutBtn = document.getElementById("logOutBtn");
 if (logOutBtn) {
     logOutBtn.addEventListener('click', logout);
 }
@@ -136,7 +142,7 @@ const login = async () => {
         },
         body: JSON.stringify(data),
     });
-     const body = await response.json();
+    const body = await response.json();
     if (response.status === 200) {
         window.location.href = 'http://localhost:3000/client/index.html';
     }
