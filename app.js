@@ -42,7 +42,7 @@ app.use(session({
     key: "userId",
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
         expires: 60000000
     }
@@ -53,6 +53,7 @@ app.use('/user', userRouter);
 app.use('/route',routesRouter);
 app.use('/auth', authRouter);
 
+<<<<<<< HEAD
 app.use((req,res,next)=>{
     if(req.session.id && req.cookies.userId){
         res.redirect('/')

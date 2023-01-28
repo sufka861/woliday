@@ -241,12 +241,13 @@
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img
-                                src=https://cdn-icons-png.flaticon.com/512/64/64572.png"
+                                src=""
                                 alt="user-avatar"
                                 class="d-block rounded"
                                 height="100"
                                 width="100"
                                 id="uploadedAvatar"
+                                onload="imagEdit()"
                         />
                         <div class="button-wrapper">
                           <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
@@ -258,6 +259,7 @@
                                     class="account-file-input"
                                     hidden
                                     accept="image/png, image/jpeg"
+
                             />
                           </label>
                           <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
@@ -274,19 +276,15 @@
                       <form id="formAccountSettings" method="POST" onsubmit="return false">
                         <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">First Name</label>
+                            <label for="firstName" class="form-label">Name</label>
                             <input
                                     class="form-control"
                                     type="text"
                                     id="firstName"
                                     name="firstName"
-                                    value="David"
                                     autofocus
+                                    readonly
                             />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" value="Avidn" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">E-mail</label>
@@ -297,6 +295,7 @@
                                     name="email"
                                     value="john.doe@example.com"
                                     placeholder="john.doe@example.com"
+                                    readonly
                             />
                           </div>
                           <div class="mb-3 col-md-6">
@@ -309,23 +308,14 @@
                                       name="phoneNumber"
                                       class="form-control"
                                       placeholder="052 6535556"
+                                      readonly
                               />
                             </div>
                           </div>
-                          <div class="mb-3 col-md-6">
-                            <label class="form-label" for="phoneNumber">Age</label>
-                            <div class="input-group input-group-merge">
-                              <input
-                                      type="number"
-                                      id="Age"
-                                      name="Age"
-                                      class="form-control"
-                              />
-                            </div>
-                          </div>
+
                           <div class="mb-3 col-md-6">
                             <label class="form-label" for="role">role</label>
-                            <select id="role" class="select2 form-select" >
+                            <select id="role" class="select2 form-select" disabled>
                               <option value="">Select</option>
                               <option value="driver">Driver</option>
                               <option value="volunteer">delivery</option>
@@ -336,8 +326,7 @@
 
                           <div class="mb-3 col-md-6">
                             <label class="form-label" for="area">division area</label>
-                            <select id="area" class="select2 form-select" >
-                              <option value="">Select</option>
+                            <select id="area" class="select2 form-select" disabled>
                               <option value="Tel Aviv">Tel Aviv</option>
                               <option value="Netanya">Netanya</option>
                               <option value="Bat Yam">Bat Yam</option>
@@ -347,19 +336,18 @@
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="language" class="form-label">Language</label>
-                            <select id="language" class="select2 form-select">
-                              <option value="">Select Language</option>
-                              <option value="hb">Hebrew</option>
-                              <option value="en">English</option>
-                              <option value="fr">French</option>
-                              <option value="de">German</option>
-                              <option value="pt">Portuguese</option>
+                            <select id="language" class="select2 form-select" disabled >
+                              <option value="English">English</option>
+                              <option value="Hebrew">Hebrew</option>
+                              <option value="French">French</option>
+                              <option value="German">German</option>
+                              <option value="Portuguese">Portuguese</option>
                             </select>
                           </div>
                         </div>
                         <div class="mt-2">
-                          <button type="submit" class="btn btn-primary me-2">Edit</button>
-<!--                          <button type="reset" class="btn btn-outline-secondary">Cancel</button>-->
+                          <button type="button" id="editButton" class="btn btn-primary me-2" onclick="editProfile()">Edit</button>
+                          <button type="button" id="saveButton" class="btn btn-outline-secondary" onclick="saveEditProfile()">Save</button>
                         </div>
                       </form>
                     </div>
@@ -467,5 +455,7 @@
 
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="script-homePage.js"></script>
+<script>getUser()</script>
 </body>
 </html>

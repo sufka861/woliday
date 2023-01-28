@@ -10,10 +10,10 @@ const {
 } = require('../controller/user');
 
 router.get('/', getAllUsers);
-router.get('/:userId', getUserById);
+router.get('/details', getUserById);
 router.post('/', createUser);
 router.put('/event',signUpToEvent)
-router.put('/:userId', updateUser);
+router.put('/details', updateUser);
 router.delete('/:userId', deleteUser);
 
 module.exports = router;

@@ -117,12 +117,17 @@ const squadTable = (data) => {
 }
 
 const logout = async () => {
+    console.log('logout')
     const response = await fetch(`http://localhost:3000/auth/logout`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
     });
+<<<<<<< HEAD
+=======
+    location.reload();
+>>>>>>> eb9d96c86591e5dd623c3f2aaf799a0c975d6809
 }
 
 const logOutBtn = document.getElementById("logOutBtn");
