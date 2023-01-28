@@ -5,5 +5,4 @@ const {getRoute} = require('../controller/routes');
 
 router.get('/',getRoute);
 
-
 module.exports = router;
