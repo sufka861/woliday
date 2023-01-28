@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Squads = require('../models/squads');
+const {groupUsersIntoSquads} = require('../logic/squad.grouping.logic');
 
 module.exports = {
     getAllSquads: (req, res) => {
@@ -28,6 +29,9 @@ module.exports = {
             });
         }
         },
+    groupSquads: (req, res) => {
+        const result = groupUsersIntoSquads();
+    },
 /*    getSquadById: (req, res,next) => {
         const squad_id = req.params.squadId;
         Squads.findById(squad_id).then((squad) => {
