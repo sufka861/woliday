@@ -6,7 +6,7 @@ const iconv = require('iconv-lite');
 
 module.exports = {
         getRoute: async (req, res) => {
-            let squad,families;
+            let squad,families,outputArray;
             try {
                 squad = await Squads.findById(req.session.data.squad_id);
                 families = squad.families;
@@ -16,16 +16,23 @@ module.exports = {
             }catch(e){
                 res.status(404);
             }
-
-            const outputArray = families.reduce((accumulator, currentValue) => {
-                return [
-                    ...accumulator,
-                    {
-                        lat: parseFloat(currentValue.location.split(',')[0]),
-                        lng: parseFloat(currentValue.location.split(',')[1]),
-                    }
-                ];
-            }, []);
+            try {
+                outputArray = families.reduce((accumulator, currentValue) => {
+                    return [
+                        ...accumulator,
+                        {
+                            lat: parseFloat(currentValue.location.split(',')[0]),
+                            lng: parseFloat(currentValue.location.split(',')[1]),
+                        }
+                    ];
+                }, []);
+                if (!outputArray) {
+                    throw new Error("problem getting femilies and locations")
+                }
+            }
+            catch(e){
+                res.status(404);
+            }
             const outputArray2 = families.reduce((accumulator, currentValue) => {
                 return [
                     ...accumulator,
