@@ -17,19 +17,26 @@ function loadPage(req, res) {
         switch (Path.extname(pathName)) {
             case ".js":
                 res.setHeader("Content-Type", "text/javascript");
+                res.sendFile(Path.join(process.cwd() + "/client" + pathName), (err) => {
+                    if (err) errorHandler(req, res, err);
+                });
                 break;
             case ".css":
                 res.setHeader("Content-Type", "text/css");
+                res.sendFile(Path.join(process.cwd() + "/client" + pathName), (err) => {
+                    if (err) errorHandler(req, res, err);
+                });
                 break;
             case ".html":
                 res.setHeader("Content-Type", "text/html");
+                res.sendFile(Path.join(process.cwd() + "/client" + pathName), (err) => {
+                    if (err) errorHandler(req, res, err);
+                });
                 break;
+            default:
+                res.send();
         }
-
         res.status(200);
-        res.sendFile(Path.join(process.cwd() + "/client" + pathName), (err) => {
-            if (err) errorHandler(req, res, err);
-        });
     } catch (err) {
         return errorHandler(req, res, err);
     }
