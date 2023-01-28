@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const squadsModel = require('../models/squads');
 const User = require('../models/user');
 const Family = require('../models/families');
-// const Squads = require("../models/squads");
+const Squads = require("../models/squads");
 const axios = require("axios");
 
 const updateUser = async (user_id, squad_id) => {
@@ -67,7 +67,7 @@ const groupFamiliesIntoSquads = async () => {
     })
 }
 // const result = groupFamiliesIntoSquads();
-
+//
 // // JUST FOR DEBUG
 // const deleteAllSquads = () => {
 //     Squads.deleteMany({}).then(() => {
@@ -77,6 +77,6 @@ const groupFamiliesIntoSquads = async () => {
 //     })
 // }
 // deleteAllSquads();
-
+//
 
 module.exports = {groupUsersIntoSquads, groupFamiliesIntoSquads}
