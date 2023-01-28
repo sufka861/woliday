@@ -285,13 +285,14 @@ function reorder(arr, index, n) {
 }
 
 const logout = async () => {
+    console.log('logout')
     const response = await fetch(`http://localhost:3000/auth/logout`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
     });
-
+    location.reload();
 }
 
 const logOutBtn = document.getElementById("logOutBtn");

@@ -55,7 +55,9 @@
 }
 
 .eventSignUpButton{
-    width: 100%;
+  margin-bottom: 20px;
+    width: 20%;
+    padding: 8px;
 }
 
 .required {
@@ -68,4 +70,8 @@
     padding: 5px;
     border-radius: 20px ;
     color: whitesmoke;
+}
+
+#saveButton{
+    display: none;
 }
