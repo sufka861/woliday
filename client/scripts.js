@@ -2,10 +2,10 @@ const avatar = document.getElementById('avatar');
 const avatarDropdownMenu = document.getElementById('avatarDropdownMenu');
 const roleDropdownMenu = document.getElementById('dropdownRole');
 const nameDropdownMenu = document.getElementById('dropdownName');
-const decodedImgCookie =  getCookie('img').replace(/%3A/g, ':').replace(/%2F/g, '/');
 
 
 if(avatar){
+    const decodedImgCookie =  getCookie('img').replace(/%3A/g, ':').replace(/%2F/g, '/');
     if(decodedImgCookie !== "undefined") {
         avatar.src = decodedImgCookie;
         avatarDropdownMenu.src = decodedImgCookie;
