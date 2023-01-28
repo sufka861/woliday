@@ -62,7 +62,7 @@
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
             <div class="app-brand demo">
                 <a href="http://localhost:3000/client/sneat/html/index.html" class="app-brand-link">
-                    <img src="image/Woliday_nobackground.svg">
+                    <img src="http://localhost:3000/client/image/Woliday_nobackground.svg">
                 </a>
 
                 <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -189,19 +189,19 @@
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="http://localhost:3000/profilePage.html">
                                         <i class="bx bx-user me-2"></i>
                                         <span class="align-middle">My Profile</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="http://localhost:3000/my-route.html">
                                         <i class="bx bx-car me-2"></i>
                                         <span class="align-middle">My route</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="http://localhost:3000/squads.html">
                                         <i class="bx bx-group me-2"></i>
                                         <span class="align-middle">Squad</span>
                                     </a>
@@ -217,9 +217,9 @@
                                 </li>
                                 <li>
 
-                                    <a id=logOutBtn" class="dropdown-item" href="login">
+                                    <a id=logOutBtn" class="dropdown-item">
                                         <i class="bx bx-power-off me-2"></i>
-                                        <span class="align-middle">Logout</span>
+                                        <span class="align-middle" onclick="logout()">Logout</span>
                                     </a>
                                 </li>
                             </ul>
@@ -238,7 +238,7 @@
                 <div class="container-xxl flex-grow-1 container-p-y">
                     <div class="card-body">
                         <div class="homepage_header">
-                            <img src="image/Woliday_nobackground.png" class="homepage_logo">
+                            <img src="http://localhost:3000/client/image/Woliday_nobackground.png" class="homepage_logo">
                             <h2>We make the holidays happy for everyone</h2>
                         </div>
                         <div class="homepage_timer">
@@ -418,5 +418,6 @@
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <script src="http://localhost:3000/client/scripts.js"></script>
+<script>EventRegistrationButton()</script>
 </body>
 </html>

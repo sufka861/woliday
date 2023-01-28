@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {
     getAllSquads,
-    getSquadById,
+    // getSquadById,
     createSquad,
     updateSquad,
     deleteSquad,

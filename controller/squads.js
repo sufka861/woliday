@@ -4,7 +4,6 @@ const Squads = require('../models/squads');
 module.exports = {
     getAllSquads: (req, res) => {
         if (req.session.data.role === 'volunteer' || req.session.data.role === 'driver'){
-            console.log(req.session.data.role)
             Squads.findById(req.session.data.squad_id).then((squad) => {
                 return res.status(200).json({
                     squad
