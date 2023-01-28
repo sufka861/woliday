@@ -3,15 +3,8 @@ const avatarDropdownMenu = document.getElementById('avatarDropdownMenu');
 const roleDropdownMenu = document.getElementById('dropdownRole');
 const nameDropdownMenu = document.getElementById('dropdownName');
 
-if (getCookie('img'))
-{
-    const decodedImgCookie = getCookie('img').replace(/%3A/g, ':').replace(/%2F/g, '/');
-}
-else {
-    const decodedImgCookie = "undefined"
-}
-
 if (avatar) {
+    const decodedImgCookie = getCookie('img').replace(/%3A/g, ':').replace(/%2F/g, '/');
     if (decodedImgCookie !== "undefined") {
         avatar.src = decodedImgCookie;
         avatarDropdownMenu.src = decodedImgCookie;
@@ -349,7 +342,8 @@ const creatingGroups = async () => {
         const creatingGroupsButton = document.getElementById("creatingGroupsButton");
         creatingGroupsButton.value = 1;
         creatingGroupsButton.disabled = true
+        alert('Excellent, Users grouped into squads!', 'success', 'alertGroups');
     } else {
-        console.log("ERROR FAILED TO CREATE GROUPS");
+        alert('Squads grouping failed', 'danger', 'alertGroups');
     }
 }

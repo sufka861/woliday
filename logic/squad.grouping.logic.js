@@ -13,9 +13,9 @@ const updateUser = async (user_id, squad_id) => {
     });
 }
 
-const updateUsersSquadId = async () => {
-    const squads = await squadsModel.find({});
-    squads.forEach((squad) => {
+const updateUsersSquadId = async (allSquads) => {
+    // const squads = await squadsModel.find({});
+    allSquads.forEach((squad) => {
         const squadId = squad._id;
         const driver = squad.driver;
         const volunteer = squad.volunteer;
@@ -36,6 +36,7 @@ const groupUsersIntoSquads = async () => {
     const nonDrivers = users.filter((user) => {
         return user.role === "volunteer";
     })
+    let allSquads = [];
     drivers.forEach((driver) => {
         const squad = new squadsModel({
             _id: new mongoose.Types.ObjectId(),
@@ -44,8 +45,9 @@ const groupUsersIntoSquads = async () => {
             volunteer2: nonDrivers.pop()
         })
         squad.save()
+        allSquads.push(squad);
     })
-    const response = updateUsersSquadId();
+    const response = updateUsersSquadId(allSquads);
 }
 
 
@@ -67,7 +69,7 @@ const groupFamiliesIntoSquads = async () => {
     })
 }
 
-//JUST FOR DEBUG
+// // JUST FOR DEBUG
 // const deleteAllSquads = () => {
 //     Squads.deleteMany({}).then(() => {
 //         console.log("deleted all squads from DB");

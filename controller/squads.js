@@ -29,6 +29,9 @@ module.exports = {
         },
     groupSquads: (req, res) => {
         const result = groupUsersIntoSquads();
+        res.status(200).json({
+            "msg":"Grouped all into squads"
+        })
     },
 /*    getSquadById: (req, res,next) => {
         const squad_id = req.params.squadId;
