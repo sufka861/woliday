@@ -1,4 +1,3 @@
-
 let myLatLng = { lat:32.099308390571736, lng: 34.82521696036913 };
 let endLatLng = {lat: 32.10083953947424, lng: 34.82644780955043};
 
@@ -67,10 +66,14 @@ const finishRoute = async () => {
             finished: true
         }),
     });
-    //handle response
+    if (response.status === 200) {
+        alert('Excellent! You\'ve completed your entire division route, Happy holiday!', 'success', 'alertGroups');
+    } else {
+        alert('A server problem prevented the end of your distribution from being saved. Please contact the system administrator', 'danger', 'alertGroups');
+    }
 }
 
-const btnFinished = document.getElementById("btnFinished");
+let btnFinished = document.getElementById("btnFinished");
 if (btnFinished){
     btnFinished.addEventListener('click', finishRoute)
 }
