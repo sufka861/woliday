@@ -349,6 +349,9 @@ const groupingFamilies = async () => {
         },
     });
     if (response.status === 200) {
+        const creatingFamiliesButton = document.getElementById("creatingFamiliesButton");
+        creatingFamiliesButton.value = 1;
+        creatingFamiliesButton.disabled = true
         alert('Excellent, Families grouped into squads!', 'success', 'alertGroups');
     } else {
         alert('Families grouping failed', 'danger', 'alertGroups');
@@ -366,9 +369,11 @@ const creatingGroups = async () => {
         const creatingGroupsButton = document.getElementById("creatingGroupsButton");
         creatingGroupsButton.value = 1;
         creatingGroupsButton.disabled = true
+        const creatingFamiliesButton = document.getElementById("creatingFamiliesButton");
+        creatingFamiliesButton.style.display = 'inline-block';
         alert('Excellent, Users grouped into squads!', 'success', 'alertGroups');
     } else {
         alert('Squads grouping failed', 'danger', 'alertGroups');
     }
-    const result = await groupingFamilies();
 }
+

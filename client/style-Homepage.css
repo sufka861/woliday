@@ -75,3 +75,7 @@
 #saveButton{
     display: none;
 }
+
+#creatingFamiliesButton{
+    display: none;
+}
