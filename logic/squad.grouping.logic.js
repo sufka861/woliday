@@ -78,8 +78,8 @@ const groupFamiliesIntoSquads = async () => {
 }
 // const result = groupFamiliesIntoSquads();
 
-
-
+//
+//
 // deleteAllSquads();
 
 

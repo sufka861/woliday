@@ -180,7 +180,8 @@ const login = async () => {
 const EventRegistrationButton = () => {
     const signUpEventBth = document.getElementById("signUpEventShow");
     const creatingGroupsButton = document.getElementById("creatingGroupsButton");
-
+    const creatingFamiliesButton = document.getElementById("creatingFamiliesButton");
+    creatingFamiliesButton.style.display = 'none'
     const role = getCookie('role');
     if (role !== 'none') {
         signUpEventBth.style.display = 'inline-block';
@@ -191,7 +192,6 @@ const EventRegistrationButton = () => {
     if (role === 'admin') {
         creatingGroupsButton.style.display = 'inline-block';
         signUpEventBth.style.display = 'none';
-        if (creatingGroupsButton.value === 1) creatingGroupsButton.disabled = true
     }
 }
 
