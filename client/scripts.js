@@ -86,6 +86,7 @@ const squadTable = (data) => {
     }
     const tbl = document.querySelector("#squadTbl");
     tbl.innerHTML = "";
+    let letter = 65;
     for (let i = 0; i < data.length; i++) {
         const status = data[i].finished == true ? 'Finished' : 'In-Progress'
         let vol2 = "";
@@ -101,7 +102,7 @@ const squadTable = (data) => {
         let test =
             `<div class="card-body">
           <div class="card">
-              <h6 class="card-header">Squad Id: ${data[i]._id}
+              <h6 class="card-header">Squad: ${String.fromCharCode(letter)}
               <h6 class="card-header ${status}">Status: ${status}</h6>
               <div id="squadsTable" class="table-responsive text-nowrap">
                 <table class="table table-hover">
@@ -136,6 +137,7 @@ const squadTable = (data) => {
             </div>
 </div>`
         tbl.innerHTML += test;
+        letter++
     }
 }
 
