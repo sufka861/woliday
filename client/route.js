@@ -4,7 +4,7 @@ let endLatLng = {lat: 32.10083953947424, lng: 34.82644780955043};
 
 let mapOptions = {
     center: myLatLng,
-    zoom: 14,
+    zoom: 20,
     mapTypeId: google.maps.MapTypeId.ROADMAP
 };
 
