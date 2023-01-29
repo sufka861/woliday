@@ -4,7 +4,7 @@ const roleDropdownMenu = document.getElementById('dropdownRole');
 const nameDropdownMenu = document.getElementById('dropdownName');
 
 
-const decodedImgCookie =  getCookie('img').replace(/%3A/g, ':').replace(/%2F/g, '/');
+// const decodedImgCookie =  getCookie('img').replace(/%3A/g, ':').replace(/%2F/g, '/');
 
 
 if (avatar) {
@@ -91,6 +91,7 @@ const squadTable = (data) => {
         let vol2 = "";
         if (data[i].volunteer2) {
             vol2 = `<tr>
+<td><img src=${data[i].volunteer2.img} alt="Avatar" class="w-px-40 h-auto rounded-circle"></td>
             <td><strong>${data[i].volunteer2.name}</strong></td>
             <td>${data[i].volunteer2.role}</td>
             <td>${data[i].volunteer2.tel}</td>
@@ -106,6 +107,7 @@ const squadTable = (data) => {
                 <table class="table table-hover">
                   <thead>
                   <tr>
+                    <th>Img</th>
                     <th>Name</th>
                     <th>Role</th>
                     <th>Phone Number</th>
@@ -114,12 +116,14 @@ const squadTable = (data) => {
                   </thead>
                   <tbody class="table-border-bottom-0">
                   <tr>
+                    <td><img src=${data[i].driver.img} alt="Avatar" class="w-px-40 h-auto rounded-circle"></td>
                     <td><strong>${data[i].driver.name}</strong></td>
                     <td>${data[i].driver.role}</td>
                     <td>${data[i].driver.tel}</td>
                     <td>${data[i].driver.email}</td>
                     </tr>
                      <tr>
+                     <td><img src=${data[i].volunteer.img} alt="Avatar" class="w-px-40 h-auto rounded-circle"></td>
                     <td><strong>${data[i].volunteer.name}</strong></td>
                     <td>${data[i].volunteer.role}</td>
                     <td>${data[i].volunteer.tel}</td>
@@ -337,6 +341,23 @@ function getCookie(name) {
     }
 }
 
+const groupingFamilies = async () => {
+    const response = await fetch(`http://localhost:3000/squad/groupFamilies`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    if (response.status === 200) {
+        const creatingFamiliesButton = document.getElementById("creatingFamiliesButton");
+        creatingFamiliesButton.value = 1;
+        creatingFamiliesButton.disabled = true
+        alert('Excellent, Families grouped into squads!', 'success', 'alertGroups');
+    } else {
+        alert('Families grouping failed', 'danger', 'alertGroups');
+    }
+}
+
 const creatingGroups = async () => {
     const response = await fetch(`http://localhost:3000/squad/groupSquads`, {
         method: 'GET',
@@ -348,8 +369,11 @@ const creatingGroups = async () => {
         const creatingGroupsButton = document.getElementById("creatingGroupsButton");
         creatingGroupsButton.value = 1;
         creatingGroupsButton.disabled = true
+        const creatingFamiliesButton = document.getElementById("creatingFamiliesButton");
+        creatingFamiliesButton.style.display = 'inline-block';
         alert('Excellent, Users grouped into squads!', 'success', 'alertGroups');
     } else {
         alert('Squads grouping failed', 'danger', 'alertGroups');
     }
 }
+

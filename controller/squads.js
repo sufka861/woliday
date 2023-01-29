@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Squads = require('../models/squads');
-const {groupUsersIntoSquads} = require('../logic/squad.grouping.logic');
+const {groupUsersIntoSquads, groupFamiliesIntoSquads} = require('../logic/squad.grouping.logic');
 const {sendEmail, sendEmailEvent} = require("../sendEmail/sendEmail");
 
 module.exports = {
@@ -32,6 +32,12 @@ module.exports = {
         const result = groupUsersIntoSquads();
         res.status(200).json({
             "msg":"Grouped all into squads"
+        })
+    },
+    groupFamilies: (req, res) => {
+        const result = groupFamiliesIntoSquads();
+        res.status(200).json({
+            "msg":"Grouped families into squads"
         })
     },
 /*    getSquadById: (req, res,next) => {
@@ -110,8 +116,8 @@ module.exports = {
     },
     send: async (req, res) => {
         const user = req.session.data;
+
         Squads.findOne({ _id: user.squad_id }).then(async(squad) => {
-            console.log(squad)
            await sendEmailEvent(user, squad)
             res.send()
         }).catch(error => {

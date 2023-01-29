@@ -5,6 +5,15 @@ const Family = require('../models/families');
 // const Squads = require("../models/squads");
 const axios = require("axios");
 
+// JUST FOR DEBUG
+const deleteAllSquads = async () => {
+    await squadsModel.deleteMany({}).then(() => {
+        console.log("deleted all squads from DB");
+    }).catch(error => {
+        console.log({error})
+    })
+}
+
 const updateUser = async (user_id, squad_id) => {
     User.userModel.findOneAndUpdate({ _id: user_id.toString() }, { squad_id : squad_id.toString() }, (error, user) => {
         if (error) {
@@ -29,6 +38,7 @@ const updateUsersSquadId = async (allSquads) => {
 }
 
 const groupUsersIntoSquads = async () => {
+    const result = deleteAllSquads();
     const users = await User.userModel.find({});
     const drivers = users.filter((user) => {
         return user.role === "driver";
@@ -50,8 +60,7 @@ const groupUsersIntoSquads = async () => {
     const response = updateUsersSquadId(allSquads);
 }
 
-
-
+// const result = groupUsersIntoSquads();
 
 const groupFamiliesIntoSquads = async () => {
     let families = await Family.familyModel.find({});
@@ -59,23 +68,17 @@ const groupFamiliesIntoSquads = async () => {
     const squads = await squadsModel.find({});
     const numOfSquads = squads.length;
     const numOfFamiliesPerSquad = numOfFamilies / numOfSquads;
-    squads.forEach((squad) => {
+    squads.forEach (async (squad) => {
         for (let i = 0; i < numOfFamiliesPerSquad; i++) {
             const family = families.pop();
-            const result = squadsModel.updateOne({_id: squad._id}, {$push : {families: family}});
+            const result = await squadsModel.updateOne({_id: squad._id}, {$push : {families: family}});
        }
     })
 }
 // const result = groupFamiliesIntoSquads();
 
-// // JUST FOR DEBUG
-// const deleteAllSquads = () => {
-//     Squads.deleteMany({}).then(() => {
-//         console.log("deleted all squads from DB");
-//     }).catch(error => {
-//         console.log({error})
-//     })
-// }
+
+
 // deleteAllSquads();
 
 
