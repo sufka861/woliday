@@ -18,16 +18,13 @@ module.exports = {
         }
         try {
             outputArray = families.reduce((accumulator, currentValue) => {
-                return [
-                    ...accumulator,
-                    {
-                        lat: parseFloat(currentValue.location.split(',')[0]),
-                        lng: parseFloat(currentValue.location.split(',')[1]),
-                    }
-                ];
+                return currentValue.location
+                    ? [...accumulator, { lat: parseFloat(currentValue.location.split(',')[0]), lng: parseFloat(currentValue.location.split(',')[1]) }]
+                    : accumulator;
             }, []);
+
             if (!outputArray) {
-                throw new Error("problem getting femilies and locations")
+                throw new Error("problem getting femilies and locations ")
             }
             outputArray2 = families.reduce((accumulator, currentValue) => {
                 return [
@@ -42,8 +39,9 @@ module.exports = {
                     }
                 ];
             }, []);
-            res.json({locations: outputArray, families: outputArray2});
+            res.status(200).json({locations: outputArray, families: outputArray2});
         } catch (e) {
+            console.log(e)
             res.status(404);
         }
     },
