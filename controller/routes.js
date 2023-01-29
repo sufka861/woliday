@@ -3,6 +3,7 @@ const Families = require('../models/families');
 const fs = require('fs');
 const json5 = require("json5");
 const iconv = require('iconv-lite');
+const Family = require("../models/families");
 
 module.exports = {
     getRoute: async (req, res) => {
@@ -67,6 +68,37 @@ module.exports = {
             }
         });
 
+    },
+    countFamily: (req, res) => {
+        const {contactName} = req.body;
+        Family.familyModel.countDocuments({contactName: contactName}).then((number) => {
+            res.status(200).json({
+                number
+            })
+        }).catch(error => {
+            res.status(500).json({
+                error
+            })
+        });
+    },
+
+    delFamily: (req, res) => {
+        const {contactName, numberToDelete} = req.body;
+        Family.familyModel.find({contactName: contactName}).limit(numberToDelete).then((docs) => {
+            docs.forEach((doc) => {
+                Family.familyModel.deleteOne({contactName: contactName}, (err) => {
+                    if (err) {
+                        res.status(500).json({
+                            error
+                        })
+                    }
+                    else {
+                        res.status(200)
+                    }
+                })
+                res.end()
+            });
+        });
     }
 }
 
