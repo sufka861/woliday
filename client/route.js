@@ -68,7 +68,14 @@ const finishRoute = async () => {
             finished: true
         }),
     });
-    //handle response
+    if (response.status === 200) {
+/*        const creatingGroupsButton = document.getElementById("alertFinished");
+        creatingGroupsButton.value = 1;
+        creatingGroupsButton.disabled = true*/
+        alert('Excellent! You\'ve completed your entire division route, Happy holiday!', 'success', 'alertGroups');
+    } else {
+        alert('A server problem prevented the end of your distribution from being saved. Please contact the system administrator', 'danger', 'alertGroups');
+    }
 }
 
 const btnFinished = document.getElementById("btnFinished");
