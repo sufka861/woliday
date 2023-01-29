@@ -55,12 +55,14 @@ body {
   height: 100%;
 }
 
-
+.myRoute .btn-primary {
+  margin-top: 0;
+  width: 60%;
+}
 
 #openMapBtn {
   position: absolute;
   right: 0;
-  bottom: -1.8rem;
   color: #2323b1;
   background-color: white;
   border: unset;
