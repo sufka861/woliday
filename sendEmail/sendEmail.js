@@ -45,11 +45,11 @@ const sendEmailEvent = async (user, squad) => {
         volunteer2Name: `${squad.volunteer.name}`,
         volunteer2Tel: `${squad.volunteer.tel}`,
         volunteer2Role: `${squad.volunteer.role}`,
-        volunteerImg: `${squad.volunteer.img}`,
+        volunteer2Img: `${squad.volunteer.img}`,
         volunteer3Name: `${squad.volunteer2.name}`,
         volunteer3Tel: `${squad.volunteer2.tel}`,
         volunteer3Role: `${squad.volunteer2.role}`,
-        volunteerImg: `${squad.volunteer2.img}`,
+        volunteer3Img: `${squad.volunteer2.img}`,
     };
     await sendEmail(mailData, details);
 };

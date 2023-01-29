@@ -4,6 +4,7 @@ const User = require('../models/user');
 const Family = require('../models/families');
 // const Squads = require("../models/squads");
 const axios = require("axios");
+const {sendEmailEvent} = require("../sendEmail/sendEmail");
 
 // JUST FOR DEBUG
 const deleteAllSquads = async () => {
@@ -32,7 +33,7 @@ const updateUsersSquadId = async (allSquads) => {
         const usersToUpdate = [driver, volunteer, volunteer2];
         usersToUpdate.forEach((user) => {
             const response = updateUser(user._id, squadId);
-            //SEND EMAIL to user with invite
+            sendEmailEvent(user,squad);
         })
     });
 }

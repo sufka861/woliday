@@ -114,16 +114,4 @@ module.exports = {
             })
         });
     },
-    send: async (req, res) => {
-        const user = req.session.data;
-
-        Squads.findOne({ _id: user.squad_id }).then(async(squad) => {
-           await sendEmailEvent(user, squad)
-            res.send()
-        }).catch(error => {
-            res.status(500).json({
-                error
-            })
-        });
-    },
 }

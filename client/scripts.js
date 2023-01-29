@@ -284,8 +284,7 @@ const getUser = async () => {
         document.getElementById('email').value = body.user.email;
         document.getElementById('phoneNumber').value = body.user.tel;
         document.getElementById('role').value = body.user.role;
-        if (decodedImgCookie) img.src = decodedImgCookie;
-        if (!decodedImgCookie) img.src = "https://cdn-icons-png.flaticon.com/512/64/64572.png";
+        document.getElementById('uploadedAvatar').src = body.user.img;
     }
 };
 

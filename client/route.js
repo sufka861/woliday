@@ -1,3 +1,4 @@
+
 let myLatLng = { lat:32.099308390571736, lng: 34.82521696036913 };
 let endLatLng = {lat: 32.10083953947424, lng: 34.82644780955043};
 
@@ -38,22 +39,40 @@ const showfamilies = (data)=>{
         addressWaze= address.replaceAll(' ', '%20');
         console.log(`https://www.waze.com/li?q=${addressWaze}&navigate=yes&zoom=17`)
         let test = `
-            <label class="list-group-item">
-            <input type="checkbox" class="form-check-input me-1 routeCheck" onchange="checkboxFunc()" value=${address}>
-            <u>${name}</u>
-            <br>
-            ${phone}
-            <br>
-            ${address}
-            <a href="https://www.waze.com/ul?q=${addressWaze}&navigate=yes&zoom=17"
-            <i class="fab fa-waze" aria-hidden="true"></i>
+          <div id="familiesRoute">
+  <div class="container">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input me-1 routeCheck" onchange="checkboxFunc()">
+              <label class="form-check-label">
+                <u>${name}</u><br> ${phone}<br>${address}
+              </label>
+            </div>
+            <a href="https://www.waze.com/ul?q=City%20Street%20houseNumber&navigate=yes&zoom=17" class="btn btn-outline-primary">
+              <i class="fab fa-waze" aria-hidden="true"></i> Waze
             </a>
-            </label>
+          </li>
+        </ul>
+    </div>
+</div>
             `;
 
         form.innerHTML+=test;
     }
-
+    const checkboxes = document.querySelectorAll(".routeCheck");
+    for (let i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].addEventListener("change", function() {
+            const parent = this.parentElement;
+            if (this.checked) {
+                parent.style.textDecoration = "line-through";
+                parent.style.opacity = "0.5";
+            } else {
+                parent.style.textDecoration = "none";
+                parent.style.opacity = "1";
+            }
+        });
+    }
 }
 
 const finishRoute = async () => {
@@ -66,14 +85,10 @@ const finishRoute = async () => {
             finished: true
         }),
     });
-    if (response.status === 200) {
-        alert('Excellent! You\'ve completed your entire division route, Happy holiday!', 'success', 'alertGroups');
-    } else {
-        alert('A server problem prevented the end of your distribution from being saved. Please contact the system administrator', 'danger', 'alertGroups');
-    }
+    //handle response
 }
 
-let btnFinished = document.getElementById("btnFinished");
+const btnFinished = document.getElementById("btnFinished");
 if (btnFinished){
     btnFinished.addEventListener('click', finishRoute)
 }
