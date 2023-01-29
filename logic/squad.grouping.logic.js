@@ -39,6 +39,7 @@ const updateUsersSquadId = async (allSquads) => {
 }
 
 const groupUsersIntoSquads = async () => {
+    let i = 65;
     const result = deleteAllSquads();
     const users = await User.userModel.find({});
     const drivers = users.filter((user) => {
@@ -50,11 +51,13 @@ const groupUsersIntoSquads = async () => {
     let allSquads = [];
     drivers.forEach((driver) => {
         const squad = new squadsModel({
+            name: String.fromCharCode(i),
             _id: new mongoose.Types.ObjectId(),
             driver: driver,
             volunteer: nonDrivers.pop(),
             volunteer2: nonDrivers.pop()
         })
+        i++;
         squad.save()
         allSquads.push(squad);
     })

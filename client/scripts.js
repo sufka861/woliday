@@ -102,7 +102,7 @@ const squadTable = (data) => {
         let test =
             `<div class="card-body">
           <div class="card">
-              <h6 class="card-header">Squad: ${String.fromCharCode(letter)}
+              <h6 class="card-header">Squad: ${data[i].name}
               <h6 class="card-header ${status}">Status: ${status}</h6>
               <div id="squadsTable" class="table-responsive text-nowrap">
                 <table class="table table-hover">
