@@ -54,7 +54,7 @@ const byStatus = (key, value) => {
 }
 
 const getSquadsByParam = async (key, value) => {
-    const response = await fetch(`http://localhost:3000/squad/${key}/${value}`, {
+    const response = await fetch(`https://woliday.onrender.com/squad/${key}/${value}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ const getSquadsByParam = async (key, value) => {
 
 
 const getSquads = async () => {
-    const response = await fetch(`http://localhost:3000/squad`, {
+    const response = await fetch(`https://woliday.onrender.com/squad`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -143,7 +143,7 @@ const squadTable = (data) => {
 
 const logout = async () => {
     console.log('logout')
-    const response = await fetch(`http://localhost:3000/auth/logout`, {
+    const response = await fetch(`https://woliday.onrender.com/auth/logout`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -162,7 +162,7 @@ const login = async () => {
         email: document.getElementById('email').value,
         password: document.getElementById('password').value,
     };
-    const response = await fetch(`http://localhost:3000/auth/login`, {
+    const response = await fetch(`https://woliday.onrender.com/auth/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -171,7 +171,7 @@ const login = async () => {
     });
     const body = await response.json();
     if (response.status === 200) {
-        window.location.href = 'http://localhost:3000/client/index.html';
+        window.location.href = 'https://woliday.onrender.com/client/index.html';
     }
 };
 
@@ -210,7 +210,7 @@ const signUpEvent = async () => {
     const data = {
         role: document.getElementById('role').value,
     };
-    const response = await fetch(`http://localhost:3000/user/event`, {
+    const response = await fetch(`https://woliday.onrender.com/user/event`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -274,7 +274,7 @@ const createSelect = (name) => {
 
 const getUser = async () => {
     const img = document.getElementById('uploadedAvatar');
-    const response = await fetch(`http://localhost:3000/user/details`, {
+    const response = await fetch(`https://woliday.onrender.com/user/details`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -316,7 +316,7 @@ const saveEditProfile = async () => {
         tel: document.getElementById('phoneNumber').value,
         role: document.getElementById('role').value,
     };
-    const response = await fetch(`http://localhost:3000/user/`, {
+    const response = await fetch(`https://woliday.onrender.com/user/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -343,7 +343,7 @@ function getCookie(name) {
 }
 
 const groupingFamilies = async () => {
-    const response = await fetch(`http://localhost:3000/squad/groupFamilies`, {
+    const response = await fetch(`https://woliday.onrender.com/squad/groupFamilies`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -360,7 +360,7 @@ const groupingFamilies = async () => {
 }
 
 const creatingGroups = async () => {
-    const response = await fetch(`http://localhost:3000/squad/groupSquads`, {
+    const response = await fetch(`https://woliday.onrender.com/squad/groupSquads`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
