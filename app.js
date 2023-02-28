@@ -59,7 +59,7 @@ app.use('/client', express.static(process.cwd() + "/client"));
 
 app.use((req,res,next)=>{
     if(!(req.session.id && req.cookies.userId)){
-        res.redirect('https://woliday.onrender.com/client/login.html')
+        res.redirect('https://woliday-0yt9.onrender.com/client/login.html')
     }
     next();
 })

@@ -20,7 +20,7 @@ const initRoutePage= ()=> {
     calcRouteMap();
 }
 const calcRouteMap = async () => {
-    const response = await fetch(`https://woliday.onrender.com/route`, {
+    const response = await fetch(`https://woliday-0yt9.onrender.com/route`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const showfamilies = (data)=>{
 }
 
 const finishRoute = async () => {
-    const response = await fetch(`https://woliday.onrender.com/squad`, {
+    const response = await fetch(`https://woliday-0yt9.onrender.com/squad`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
