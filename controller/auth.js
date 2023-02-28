@@ -33,8 +33,8 @@ module.exports = {
     },
     register: async (req, res) => {
         try {
-            const { email, password, phone, username } = req.body;
-            if (!(email && password && phone && username)) {
+            const { email, password, phone, name } = req.body;
+            if (!(email && password && phone && name)) {
                 throw new Error("All input is required");
             }
             if (!mailValidator.validate(email)) {
@@ -49,8 +49,9 @@ module.exports = {
                 email,
                 password: hashedPassword,
                 phone,
-                username,
+                name,
             });
+
             const savedUser = await newUser.save();
 
             req.session.data = savedUser;

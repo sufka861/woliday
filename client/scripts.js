@@ -180,7 +180,7 @@ const registration = async () => {
         email: document.getElementById('email').value,
         password: document.getElementById('password').value,
         phone: document.getElementById('phone').value,
-        username: document.getElementById('username').value,
+        name: document.getElementById('username').value,
     };
     const response = await fetch(`https://woliday-0yt9.onrender.com/register`, {
         method: 'POST',
