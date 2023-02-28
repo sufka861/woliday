@@ -54,19 +54,13 @@ module.exports = {
 
             const savedUser = await newUser.save();
 
-            req.session.data = savedUser;
             res.status(200).json({
-                message: "User created",
+                message: `${savedUser.name} User created`,
             });
         } catch (err) {
             res.status(401).json({ message: err.message });
         }
     },
-    check: async (require,response) =>{
-        const user = await User.userModel.find({});
-        response.status(200).json(user);
-    },
-
     logout: async (req, res) =>{
         req.session.destroy((err) => {
             if(err) {
