@@ -64,6 +64,7 @@ module.exports = {
     logout: async (req, res) =>{
         req.session.destroy((err) => {
             if(err) {
+                res.clearCookie('userId');
                 res.send({ message: "Error while destroying session"});
             } else {
                 res.clearCookie('name');
