@@ -175,6 +175,25 @@ const login = async () => {
     }
 };
 
+const registration = async () => {
+    const data = {
+        email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+        phone: document.getElementById('phone').value,
+        username: document.getElementById('username').value,
+    };
+    const response = await fetch(`https://woliday-0yt9.onrender.com/register`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    const body = await response.json();
+    if (response.status === 200) {
+        window.location.href = 'https://woliday-0yt9.onrender.com/client/index.html';
+    }
+};
 
 
 const EventRegistrationButton = () => {

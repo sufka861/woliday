@@ -2,6 +2,8 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const mailValidator = require('email-validator');
 const mongoose = require("mongoose");
+const {response} = require("express");
+const {userModel} = require("../models/user");
 
 
 module.exports = {
@@ -28,6 +30,40 @@ module.exports = {
         } catch (err) {
             res.status(401).json({message: err.message });
         }
+    },
+    register: async (req, res) => {
+        try {
+            const { email, password, phone, username } = req.body;
+            if (!(email && password && phone && username)) {
+                throw new Error("All input is required");
+            }
+            if (!mailValidator.validate(email)) {
+                throw new Error("Email not valid");
+            }
+            const existingUser = await User.userModel.findOne({ email });
+            if (existingUser) {
+                throw new Error("Email already in use");
+            }
+            const hashedPassword = await bcrypt.hash(password, 10);
+            const newUser = new User.userModel({
+                email,
+                password: hashedPassword,
+                phone,
+                username,
+            });
+            const savedUser = await newUser.save();
+
+            req.session.data = savedUser;
+            res.status(200).json({
+                message: "User created",
+            });
+        } catch (err) {
+            res.status(401).json({ message: err.message });
+        }
+    },
+    check: async (require,response) =>{
+        const user = await User.userModel.find({});
+        response.status(200).json(user);
     },
 
     logout: async (req, res) =>{
