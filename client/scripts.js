@@ -182,7 +182,7 @@ const registration = async () => {
         phone: document.getElementById('phone').value,
         name: document.getElementById('username').value,
     };
-    const response = await fetch(`https://woliday-0yt9.onrender.com/register`, {
+    const response = await fetch(`https://woliday-0yt9.onrender.com/auth/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
