@@ -191,7 +191,7 @@ const registration = async () => {
     });
     const body = await response.json();
     if (response.status === 200) {
-        window.location.reload()
+        location.href = 'login.html';
     }
 };
 
