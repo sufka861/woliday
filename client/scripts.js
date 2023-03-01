@@ -191,7 +191,7 @@ const registration = async () => {
     });
     const body = await response.json();
     if (response.status === 200) {
-        location.href = 'login.html';
+        location.href = 'https://woliday-0yt9.onrender.com/login.html';
     }
 };
 
